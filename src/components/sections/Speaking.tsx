@@ -1,16 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { eb1Achievements } from "@/lib/data";
-import { MapPin, Calendar, Mic, Video, Users, X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import {
+  MapPin,
+  Mic,
+  Video,
+  Users,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ImageIcon,
+  ChevronDown,
+  ExternalLink,
+  Calendar,
+  Award,
+} from "lucide-react";
 
 const typeConfig = {
   Speaker: { color: "#2ea8ff", icon: Mic },
   Panelist: { color: "#907aea", icon: Users },
   Contributor: { color: "#00f56b", icon: Video },
   Participant: { color: "#f5bc00", icon: Users },
+  Organizer: { color: "#fa3d8c", icon: Award },
+  Facilitator: { color: "#00d4ff", icon: Users },
+  Coach: { color: "#ff6b6b", icon: Users },
 };
 
 type SpeakingEvent = {
@@ -20,11 +36,41 @@ type SpeakingEvent = {
   topic: string;
   type: string;
   photos?: string[];
+  link?: string;
 };
 
 export function Speaking() {
   const [selectedEvent, setSelectedEvent] = useState<SpeakingEvent | null>(null);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [expandedYears, setExpandedYears] = useState<number[]>([]);
+
+  // Group events by year, sorted descending
+  const eventsByYear = useMemo(() => {
+    const grouped = eb1Achievements.speakingEngagements.reduce((acc, event) => {
+      const year = event.year;
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(event);
+      return acc;
+    }, {} as Record<number, typeof eb1Achievements.speakingEngagements>);
+
+    // Sort years descending
+    const sortedYears = Object.keys(grouped)
+      .map(Number)
+      .sort((a, b) => b - a);
+
+    return sortedYears.map((year) => ({
+      year,
+      events: grouped[year],
+    }));
+  }, []);
+
+  const toggleYear = (year: number) => {
+    setExpandedYears((prev) =>
+      prev.includes(year) ? prev.filter((y) => y !== year) : [...prev, year]
+    );
+  };
 
   const openGallery = (event: SpeakingEvent) => {
     if (event.photos && event.photos.length > 0) {
@@ -77,98 +123,154 @@ export function Speaking() {
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Sharing knowledge at international conferences and community events
-            across the globe. Click on any event to view photos.
+            across the globe. Click on a year to view events.
           </p>
         </motion.div>
 
-        {/* Events Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {eb1Achievements.speakingEngagements.map((event, index) => {
-            const config =
-              typeConfig[event.type as keyof typeof typeConfig] ||
-              typeConfig.Participant;
-            const IconComponent = config.icon;
-            const hasPhotos = event.photos && event.photos.length > 0;
+        {/* Year Accordion */}
+        <div className="space-y-4">
+          {eventsByYear.map(({ year, events }, yearIndex) => {
+            const isExpanded = expandedYears.includes(year);
 
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={year}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                onClick={() => openGallery(event)}
-                className={`bg-[#141414] rounded-xl p-6 border border-white/5 hover:border-white/10 transition-all group relative overflow-hidden ${
-                  hasPhotos ? "cursor-pointer" : ""
-                }`}
+                transition={{ delay: yearIndex * 0.05 }}
+                className="border border-white/10 rounded-xl overflow-hidden bg-[#141414]"
               >
-                {/* Background gradient on hover */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{
-                    background: `linear-gradient(135deg, ${config.color}05 0%, transparent 50%)`,
-                  }}
-                />
-
-                <div className="relative z-10">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="px-3 py-1.5 text-xs font-medium rounded-full flex items-center gap-1.5"
-                        style={{
-                          backgroundColor: `${config.color}20`,
-                          color: config.color,
-                        }}
-                      >
-                        <IconComponent size={12} />
-                        {event.type}
-                      </span>
-                      {hasPhotos && (
-                        <span className="px-2 py-1 text-xs rounded-full bg-white/5 text-gray-400 flex items-center gap-1">
-                          <ImageIcon size={12} />
-                          {event.photos?.length}
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-gray-500 text-sm flex items-center gap-1.5">
-                      <Calendar size={14} />
-                      {event.year}
+                {/* Year Header - Clickable */}
+                <button
+                  onClick={() => toggleYear(year)}
+                  className="w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="text-2xl md:text-3xl font-bold text-white">
+                      {year}
+                    </span>
+                    <span className="text-sm text-gray-500 font-mono">
+                      {events.length} event{events.length > 1 ? "s" : ""}
                     </span>
                   </div>
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown size={24} className="text-gray-400" />
+                  </motion.div>
+                </button>
 
-                  {/* Event Name */}
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#2ea8ff] transition-colors">
-                    {event.event}
-                  </h3>
+                {/* Events Content - Expandable */}
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-5 pt-0 grid md:grid-cols-2 gap-4">
+                        {events.map((event, index) => {
+                          const config =
+                            typeConfig[event.type as keyof typeof typeConfig] ||
+                            typeConfig.Participant;
+                          const IconComponent = config.icon;
+                          const hasPhotos = event.photos && event.photos.length > 0;
+                          const hasLink = event.link && event.link.length > 0;
 
-                  {/* Topic */}
-                  <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                    {event.topic}
-                  </p>
+                          const handleCardClick = () => {
+                            if (hasLink) {
+                              window.open(event.link, "_blank", "noopener,noreferrer");
+                            }
+                          };
 
-                  {/* Location */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-gray-500 text-sm">
-                      <MapPin size={14} className="text-[#2ea8ff]" />
-                      {event.location}
-                    </div>
-                    {hasPhotos && (
-                      <span className="text-xs text-gray-500 group-hover:text-[#2ea8ff] transition-colors">
-                        Click to view photos →
-                      </span>
-                    )}
-                  </div>
-                </div>
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.05 }}
+                              className={`bg-[#1a1a1a] rounded-xl p-5 border border-white/5 hover:border-white/10 transition-all group relative overflow-hidden ${
+                                hasLink ? "cursor-pointer" : ""
+                              }`}
+                              onClick={handleCardClick}
+                            >
+                              {/* Background gradient on hover */}
+                              <div
+                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                                style={{
+                                  background: `linear-gradient(135deg, ${config.color}08 0%, transparent 50%)`,
+                                }}
+                              />
 
-                {/* Decorative corner */}
-                <div
-                  className="absolute top-0 right-0 w-20 h-20 opacity-5 group-hover:opacity-10 transition-opacity"
-                  style={{
-                    background: `radial-gradient(circle at top right, ${config.color}, transparent 70%)`,
-                  }}
-                />
+                              <div className="relative z-10">
+                                {/* Header */}
+                                <div className="flex items-start justify-between mb-3">
+                                  <span
+                                    className="px-2.5 py-1 text-xs font-medium rounded-full flex items-center gap-1.5"
+                                    style={{
+                                      backgroundColor: `${config.color}20`,
+                                      color: config.color,
+                                    }}
+                                  >
+                                    <IconComponent size={12} />
+                                    {event.type}
+                                  </span>
+                                  {hasLink && (
+                                    <ExternalLink size={16} className="text-gray-500 group-hover:text-[#2ea8ff] transition-colors" />
+                                  )}
+                                </div>
+
+                                {/* Event Name */}
+                                <h3 className="text-lg font-semibold text-white mb-1.5 group-hover:text-[#2ea8ff] transition-colors">
+                                  {event.event}
+                                </h3>
+
+                                {/* Topic */}
+                                <p className="text-gray-400 text-sm mb-3 leading-relaxed line-clamp-2">
+                                  {event.topic}
+                                </p>
+
+                                {/* Location */}
+                                <div className="flex items-center gap-1.5 text-gray-500 text-sm mb-4">
+                                  <MapPin size={14} className="text-[#2ea8ff]" />
+                                  {event.location}
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex items-center gap-2">
+                                  {hasPhotos && (
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        openGallery(event);
+                                      }}
+                                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all"
+                                    >
+                                      <ImageIcon size={14} />
+                                      View Photos ({event.photos?.length})
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Decorative corner */}
+                              <div
+                                className="absolute top-0 right-0 w-16 h-16 opacity-5 group-hover:opacity-10 transition-opacity"
+                                style={{
+                                  background: `radial-gradient(circle at top right, ${config.color}, transparent 70%)`,
+                                }}
+                              />
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             );
           })}
@@ -202,7 +304,7 @@ export function Speaking() {
 
       {/* Photo Gallery Modal */}
       <AnimatePresence>
-        {selectedEvent && selectedEvent.photos && (
+        {selectedEvent && selectedEvent.photos && selectedEvent.photos.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -219,16 +321,38 @@ export function Speaking() {
             >
               {/* Header */}
               <div className="p-4 border-b border-white/5 flex items-center justify-between">
-                <div>
+                <div className="flex-1">
                   <h3 className="text-white font-semibold">{selectedEvent.event}</h3>
-                  <p className="text-gray-400 text-sm">{selectedEvent.location} • {selectedEvent.year}</p>
+                  <div className="flex items-center gap-3 text-gray-400 text-sm mt-1">
+                    <span className="flex items-center gap-1">
+                      <MapPin size={14} />
+                      {selectedEvent.location}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar size={14} />
+                      {selectedEvent.year}
+                    </span>
+                  </div>
                 </div>
-                <button
-                  onClick={closeGallery}
-                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-                >
-                  <X size={20} className="text-white" />
-                </button>
+                <div className="flex items-center gap-2">
+                  {selectedEvent.link && (
+                    <a
+                      href={selectedEvent.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors flex items-center gap-2 text-sm text-gray-400 hover:text-[#2ea8ff]"
+                    >
+                      <ExternalLink size={16} />
+                      <span className="hidden sm:inline">View Event</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={closeGallery}
+                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                  >
+                    <X size={20} className="text-white" />
+                  </button>
+                </div>
               </div>
 
               {/* Image Container */}

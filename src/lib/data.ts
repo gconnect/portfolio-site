@@ -109,20 +109,22 @@ export const eb1Achievements = {
 
   speakingEngagements: [
     {
+      event: "Google Developers Festival (Devfest Uyo)",
+      location: "Uyo, Nigeria",
+      year: 2025,
+      topic: "Building Safe, Secure and Scalable Solutions using AI",
+      type: "Panelist",
+      photos: ["/images/events/devfest-uyo-1.jpg"],
+      link: "https://gdg.community.dev/gdg-uyo/",
+    },
+    {
       event: "Ethereum Devcon SEA",
       location: "Bangkok, Thailand",
       year: 2024,
       topic: "Native Implementation of Ephemery Testnet on Besu and Teku Client",
       type: "Speaker",
       photos: ["/images/events/devcon-sea-1.jpg", "/images/events/devcon-sea-2.jpg"],
-    },
-    {
-      event: "Google Developers Festival (Devfest Uyo)",
-      location: "Nigeria",
-      year: 2025,
-      topic: "Building Safe, Secure and Scalable Solutions using AI",
-      type: "Panelist",
-      photos: ["/images/events/devfest-uyo-1.jpg"],
+      link: "https://devcon.org/",
     },
     {
       event: "Ethereum Frontiers",
@@ -131,6 +133,7 @@ export const eb1Achievements = {
       topic: "Open Permissionless Internet Economy Across Africa",
       type: "Participant",
       photos: ["/images/events/eth-frontiers-1.jpg"],
+      link: "https://www.ethereumfrontiers.com/",
     },
     {
       event: "Wikimedia Hackathon",
@@ -139,6 +142,7 @@ export const eb1Achievements = {
       topic: "Wikieducation Dashboard Contributions",
       type: "Contributor",
       photos: ["/images/events/wikimedia-1.jpg"],
+      link: "https://www.mediawiki.org/wiki/Wikimedia_Hackathon_2024",
     },
     {
       event: "Google Developer Festival (DevFest Owerri)",
@@ -147,14 +151,79 @@ export const eb1Achievements = {
       topic: "Building For the Next Billion Web3 Users",
       type: "Speaker",
       photos: ["/images/events/devfest-owerri-1.jpg"],
+      link: "https://gdg.community.dev/gdg-owerri/",
     },
     {
-      event: "Pycon Africa",
+      event: "PyCon Africa",
       location: "Accra, Ghana",
       year: 2019,
       topic: "Python Developer Community",
       type: "Participant",
       photos: ["/images/events/pycon-africa-1.jpg"],
+      link: "https://africa.pycon.org/",
+    },
+    {
+      event: "Scratch Educators Meetup",
+      location: "Nigeria",
+      year: 2019,
+      topic: "Teaching programming to young learners using Scratch",
+      type: "Participant",
+      photos: [],
+      link: "https://scratch.mit.edu/",
+    },
+    {
+      event: "Django Girls Workshop",
+      location: "Nigeria",
+      year: 2018,
+      topic: "Organizing and coaching women in web development with Django",
+      type: "Organizer",
+      photos: [],
+      link: "https://djangogirls.org/",
+    },
+    {
+      event: "SheisTechY Workshop",
+      location: "Nigeria",
+      year: 2018,
+      topic: "Tech workshop for secondary school girls",
+      type: "Organizer",
+      photos: [],
+      link: "",
+    },
+    {
+      event: "Python Akwa Ibom Workshop",
+      location: "Akwa Ibom, Nigeria",
+      year: 2018,
+      topic: "Python programming workshop for local developers",
+      type: "Organizer",
+      photos: [],
+      link: "",
+    },
+    {
+      event: "Andela Learning Community",
+      location: "Nigeria",
+      year: 2018,
+      topic: "Facilitating developer learning and growth",
+      type: "Facilitator",
+      photos: [],
+      link: "https://andela.com/",
+    },
+    {
+      event: "DevFest Aba",
+      location: "Aba, Nigeria",
+      year: 2017,
+      topic: "Google Developer Festival",
+      type: "Participant",
+      photos: [],
+      link: "https://gdg.community.dev/",
+    },
+    {
+      event: "Django Girls Workshop",
+      location: "Nigeria",
+      year: 2017,
+      topic: "Coaching women in web development with Django",
+      type: "Coach",
+      photos: [],
+      link: "https://djangogirls.org/",
     },
   ],
 
@@ -213,20 +282,20 @@ export const eb1Achievements = {
 
   leadershipRoles: [
     {
-      role: "Founder",
-      organization: "Movve.xyz",
+      role: "Founder, Movve",
+      organization: "https://movve.xyz/",
       period: "2024 - Present",
       impact: "Building ride-hailing solution for Africa",
     },
     {
-      role: "Founder",
-      organization: "Africinnovate",
+      role: "Founder, Africinnovate",
+      organization: "https://africinnovate.com/",
       period: "2020 - Present",
       impact: "African innovation and technology platform",
     },
     {
-      role: "Community Manager",
-      organization: "Ethereum Akwa Ibom Community",
+      role: "Community Lead, GDG & WTM Eket",
+      organization: "https://gdg.community.dev/gdg-eket/",
       period: "2024 - Present",
       impact: "Building local Ethereum ecosystem",
     },
@@ -376,6 +445,46 @@ export const socialLinks = {
   medium: "https://medium.com/@agatevureglory",
   substack: "https://substack.com/@agatevureglory",
 };
+
+// COMMUNITIES
+export const communities = [
+  {
+    name: "Africinnovate",
+    role: "Founder",
+    description:
+      "An African innovation and technology platform empowering developers across the continent through resources, mentorship, and community-driven initiatives.",
+    url: "https://www.africinnovate.com/",
+    logo: "/images/communities/africinnovate.png",
+    color: "#00f56b",
+  },
+  {
+    name: "Google Developer Community Eket",
+    role: "Community Lead",
+    description:
+      "Leading the local Google Developer Group chapter, organizing developer events, workshops, and hackathons to grow the tech ecosystem in Eket and surrounding areas.",
+    url: "https://gdg.community.dev/gdg-eket/",
+    logo: "/images/communities/gdg.png",
+    color: "#4285F4",
+  },
+  {
+    name: "Women Techmakers Eket",
+    role: "Community Lead",
+    description:
+      "Championing diversity and inclusion in tech by providing visibility, community, and resources for women in technology through workshops, mentorship, and networking events.",
+    url: "https://developers.google.com/womentechmakers",
+    logo: "/images/communities/wtm.png",
+    color: "#fa3d8c",
+  },
+  {
+    name: "Ethereum AkwaIbom",
+    role: "Community Lead",
+    description:
+      "Building and growing the Ethereum ecosystem in Akwa Ibom State, Nigeria through education, developer workshops, and Web3 awareness initiatives.",
+    url: "https://ethereum.org/",
+    logo: "/images/communities/ethereum.png",
+    color: "#627EEA",
+  },
+];
 
 // SKILLS/TECHNOLOGIES
 export const skills = {
