@@ -115,7 +115,7 @@ export const eb1Achievements = {
       year: 2025,
       topic: "Building Safe, Secure and Scalable Solutions using AI",
       type: "Panelist",
-      photos: ["/images/events/devfest-uyo-2025-1.jpg"],
+      photos: ["/images/events/2025/devfest-uyo-panel.jpg", "/images/events/2025/devfest-uyo-panel2.jpg"],
       link: "https://gdg.community.dev/gdg-uyo/",
     },
     {
