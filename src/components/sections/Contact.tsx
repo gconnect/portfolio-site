@@ -88,17 +88,17 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className={`py-24 relative overflow-hidden transition-colors duration-300 ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+      className={`py-24 relative overflow-hidden transition-colors duration-300 ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"
         }`}
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div
-          className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#2ea8ff]/10" : "bg-[#2ea8ff]/5"
+          className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#2ea8ff]/10" : "bg-[#2ea8ff]/10"
             }`}
         />
         <div
-          className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#907aea]/10" : "bg-[#907aea]/5"
+          className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#907aea]/10" : "bg-[#907aea]/10"
             }`}
         />
       </div>

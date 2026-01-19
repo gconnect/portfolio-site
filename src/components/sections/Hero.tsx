@@ -19,27 +19,23 @@ export function Hero() {
 
   return (
     <section
-      className={`min-h-screen flex items-center justify-center relative overflow-hidden pt-20 transition-colors duration-300 ${
-        theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
-      }`}
+      className={`min-h-screen flex items-center justify-center relative overflow-hidden pt-20 transition-colors duration-300 ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+        }`}
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Gradient orbs */}
         <div
-          className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${
-            theme === "dark" ? "bg-[#2ea8ff]/20" : "bg-[#2ea8ff]/10"
-          }`}
+          className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#2ea8ff]/20" : "bg-[#2ea8ff]/20"
+            }`}
         />
         <div
-          className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] ${
-            theme === "dark" ? "bg-[#907aea]/20" : "bg-[#907aea]/10"
-          }`}
+          className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#907aea]/20" : "bg-[#907aea]/20"
+            }`}
         />
         <div
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] ${
-            theme === "dark" ? "bg-[#00f56b]/5" : "bg-[#00f56b]/5"
-          }`}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[150px] ${theme === "dark" ? "bg-[#00f56b]/5" : "bg-[#00f56b]/10"
+            }`}
         />
 
         {/* Grid pattern */}
@@ -50,8 +46,8 @@ export function Hero() {
               theme === "dark"
                 ? `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
                    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`
-                : `linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
-                   linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)`,
+                : `linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)`,
             backgroundSize: "50px 50px",
           }}
         />
@@ -81,9 +77,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
+            className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
           >
             Glory Justin
           </motion.h1>
@@ -101,9 +96,8 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className={`text-lg mb-8 max-w-lg leading-relaxed ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
+            className={`text-lg mb-8 max-w-lg leading-relaxed ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
           >
             {personalInfo.shortBio}
           </motion.p>
@@ -127,11 +121,10 @@ export function Hero() {
             </a>
             <a
               href="#contact"
-              className={`px-6 py-3 border rounded-full transition-all duration-300 ${
-                theme === "dark"
+              className={`px-6 py-3 border rounded-full transition-all duration-300 ${theme === "dark"
                   ? "border-white/20 text-white hover:bg-white/5 hover:border-white/40"
                   : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-              }`}
+                }`}
             >
               Contact Me
             </a>
@@ -159,11 +152,10 @@ export function Hero() {
                   transition={{ delay: 0.8 + index * 0.1 }}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-10 h-10 rounded-full flex items-center justify-center hover:text-[#2ea8ff] transition-all ${
-                    theme === "dark"
+                  className={`w-10 h-10 rounded-full flex items-center justify-center hover:text-[#2ea8ff] transition-all ${theme === "dark"
                       ? "bg-white/5 text-gray-400 hover:bg-white/10"
                       : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                  }`}
+                    }`}
                   aria-label={social.label}
                 >
                   <social.icon size={18} />
@@ -189,19 +181,17 @@ export function Hero() {
               className="absolute inset-0 rounded-full bg-gradient-to-r from-[#2ea8ff] via-[#907aea] to-[#00f56b] p-1"
             >
               <div
-                className={`w-full h-full rounded-full ${
-                  theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
-                }`}
+                className={`w-full h-full rounded-full ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+                  }`}
               />
             </motion.div>
 
             {/* Profile image */}
             <div
-              className={`absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br ${
-                theme === "dark"
+              className={`absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br ${theme === "dark"
                   ? "from-[#141414] to-[#1a1a1a]"
                   : "from-gray-100 to-gray-200"
-              }`}
+                }`}
             >
               <Image
                 src="/images/profile.jpg"
@@ -215,14 +205,12 @@ export function Hero() {
 
             {/* Decorative elements */}
             <div
-              className={`absolute -inset-4 rounded-full border ${
-                theme === "dark" ? "border-white/5" : "border-gray-200"
-              }`}
+              className={`absolute -inset-4 rounded-full border ${theme === "dark" ? "border-white/5" : "border-gray-200"
+                }`}
             />
             <div
-              className={`absolute -inset-8 rounded-full border ${
-                theme === "dark" ? "border-white/[0.02]" : "border-gray-100"
-              }`}
+              className={`absolute -inset-8 rounded-full border ${theme === "dark" ? "border-white/[0.02]" : "border-gray-100"
+                }`}
             />
           </div>
 
@@ -230,9 +218,8 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            className={`absolute top-0 md:top-4 right-0 md:-right-4 px-4 py-2 border border-[#00f56b]/30 rounded-full shadow-lg ${
-              theme === "dark" ? "bg-[#141414]" : "bg-white"
-            }`}
+            className={`absolute top-0 md:top-4 right-0 md:-right-4 px-4 py-2 border border-[#00f56b]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
+              }`}
           >
             <span className="text-[#00f56b] text-sm font-medium flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00f56b] animate-pulse" />
@@ -248,9 +235,8 @@ export function Hero() {
               delay: 0.5,
               ease: "easeInOut",
             }}
-            className={`absolute bottom-0 md:bottom-8 left-0 md:-left-4 px-4 py-2 border border-[#f5bc00]/30 rounded-full shadow-lg ${
-              theme === "dark" ? "bg-[#141414]" : "bg-white"
-            }`}
+            className={`absolute bottom-0 md:bottom-8 left-0 md:-left-4 px-4 py-2 border border-[#f5bc00]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
+              }`}
           >
             <span className="text-[#f5bc00] text-sm font-medium flex items-center gap-2">
               <span className="text-lg">🏆</span>
@@ -266,9 +252,8 @@ export function Hero() {
               delay: 1,
               ease: "easeInOut",
             }}
-            className={`absolute top-1/2 -right-8 md:-right-12 px-4 py-2 border border-[#907aea]/30 rounded-full shadow-lg hidden md:block ${
-              theme === "dark" ? "bg-[#141414]" : "bg-white"
-            }`}
+            className={`absolute top-1/2 -right-8 md:-right-12 px-4 py-2 border border-[#907aea]/30 rounded-full shadow-lg hidden md:block ${theme === "dark" ? "bg-[#141414]" : "bg-white"
+              }`}
           >
             <span className="text-[#907aea] text-sm font-medium">
               50K+ Devs Impacted
@@ -294,16 +279,14 @@ export function Hero() {
           className="flex flex-col items-center gap-2"
         >
           <span
-            className={`text-xs tracking-wider group-hover:text-[#2ea8ff] transition-colors ${
-              theme === "dark" ? "text-gray-500" : "text-gray-400"
-            }`}
+            className={`text-xs tracking-wider group-hover:text-[#2ea8ff] transition-colors ${theme === "dark" ? "text-gray-500" : "text-gray-400"
+              }`}
           >
             SCROLL
           </span>
           <div
-            className={`w-6 h-10 border-2 rounded-full flex justify-center pt-2 group-hover:border-[#2ea8ff]/50 transition-colors ${
-              theme === "dark" ? "border-white/20" : "border-gray-300"
-            }`}
+            className={`w-6 h-10 border-2 rounded-full flex justify-center pt-2 group-hover:border-[#2ea8ff]/50 transition-colors ${theme === "dark" ? "border-white/20" : "border-gray-300"
+              }`}
           >
             <motion.div
               animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
