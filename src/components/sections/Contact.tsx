@@ -140,8 +140,8 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className={`rounded-2xl p-8 md:p-12 border ${theme === "dark"
-              ? "bg-[#141414] border-white/5"
-              : "bg-gray-50 border-gray-200"
+            ? "bg-[#141414] border-white/5"
+            : "bg-gray-50 border-gray-200"
             }`}
         >
           <div className="grid md:grid-cols-2 gap-8">
@@ -152,7 +152,7 @@ export function Contact() {
                   <MessageSquare size={22} className="text-[#2ea8ff]" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className={`text-xl font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                     Get in Touch
                   </h3>
                   <p className="text-gray-500 text-sm">
@@ -165,13 +165,13 @@ export function Contact() {
 
 
                 {/* Location */}
-                <div className="flex items-center gap-4 p-4 bg-[#1a1a1a] rounded-xl">
+                <div className={`flex items-center gap-4 p-4 rounded-xl ${theme === "dark" ? "bg-[#1a1a1a]" : "bg-white border border-gray-100"}`}>
                   <div className="w-10 h-10 rounded-lg bg-[#907aea]/15 flex items-center justify-center">
                     <MapPin size={18} className="text-[#907aea]" />
                   </div>
                   <div>
-                    <p className="text-gray-500 text-xs">Location</p>
-                    <p className="text-white">{personalInfo.location}</p>
+                    <p className={`text-xs ${theme === "dark" ? "text-gray-500" : "text-gray-500"}`}>Location</p>
+                    <p className={`${theme === "dark" ? "text-white" : "text-gray-900"}`}>{personalInfo.location}</p>
                   </div>
                 </div>
               </div>
@@ -192,7 +192,10 @@ export function Contact() {
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-12 h-12 rounded-xl bg-[#1a1a1a] flex items-center justify-center text-gray-400 hover:text-white transition-all border border-white/5 hover:border-white/10"
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all border ${theme === "dark"
+                        ? "bg-[#1a1a1a] text-gray-400 hover:text-white border-white/5 hover:border-white/10"
+                        : "bg-white text-gray-600 hover:text-gray-900 border-gray-200 hover:border-gray-300 shadow-sm"
+                        }`}
                       style={{ "--hover-color": social.color } as React.CSSProperties}
                       aria-label={social.label}
                     >
@@ -210,7 +213,7 @@ export function Contact() {
                   <Send size={22} className="text-[#00f56b]" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white">
+                  <h3 className={`text-xl font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                     Send a Message
                   </h3>
                   <p className="text-gray-500 text-sm">
@@ -229,7 +232,10 @@ export function Contact() {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
-                      className="w-full px-4 py-3 bg-[#1a1a1a] border border-white/5 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#2ea8ff]/50 transition-colors"
+                      className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:border-[#2ea8ff]/50 transition-colors ${theme === "dark"
+                        ? "bg-[#1a1a1a] border-white/5 text-white placeholder:text-gray-500"
+                        : "bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
+                        }`}
                     />
                   </div>
                   <div>
@@ -240,7 +246,10 @@ export function Contact() {
                       onChange={handleChange}
                       placeholder="Your email"
                       required
-                      className="w-full px-4 py-3 bg-[#1a1a1a] border border-white/5 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#2ea8ff]/50 transition-colors"
+                      className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:border-[#2ea8ff]/50 transition-colors ${theme === "dark"
+                        ? "bg-[#1a1a1a] border-white/5 text-white placeholder:text-gray-500"
+                        : "bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
+                        }`}
                     />
                   </div>
                 </div>
@@ -251,7 +260,10 @@ export function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Subject"
-                    className="w-full px-4 py-3 bg-[#1a1a1a] border border-white/5 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#2ea8ff]/50 transition-colors"
+                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:border-[#2ea8ff]/50 transition-colors ${theme === "dark"
+                      ? "bg-[#1a1a1a] border-white/5 text-white placeholder:text-gray-500"
+                      : "bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
+                      }`}
                   />
                 </div>
                 <div>
@@ -262,7 +274,10 @@ export function Contact() {
                     placeholder="Your message..."
                     rows={4}
                     required
-                    className="w-full px-4 py-3 bg-[#1a1a1a] border border-white/5 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:border-[#2ea8ff]/50 transition-colors resize-none"
+                    className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:border-[#2ea8ff]/50 transition-colors resize-none ${theme === "dark"
+                      ? "bg-[#1a1a1a] border-white/5 text-white placeholder:text-gray-500"
+                      : "bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
+                      }`}
                   />
                 </div>
 
@@ -295,8 +310,8 @@ export function Contact() {
                   whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
                   whileTap={{ scale: status === "loading" ? 1 : 0.98 }}
                   className={`w-full py-3 font-medium rounded-xl transition-all flex items-center justify-center gap-2 ${status === "loading"
-                      ? "bg-[#2ea8ff]/50 text-black/50 cursor-not-allowed"
-                      : "bg-[#2ea8ff] text-black hover:bg-[#2ea8ff]/90 hover:shadow-[0_0_20px_rgba(46,168,255,0.4)]"
+                    ? "bg-[#2ea8ff]/50 text-black/50 cursor-not-allowed"
+                    : "bg-[#2ea8ff] text-black hover:bg-[#2ea8ff]/90 hover:shadow-[0_0_20px_rgba(46,168,255,0.4)]"
                     }`}
                 >
                   {status === "loading" ? (
