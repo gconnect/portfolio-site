@@ -10,6 +10,7 @@ import {
   Building,
   Sparkles,
 } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const achievementCategories = [
   {
@@ -29,7 +30,7 @@ const achievementCategories = [
   {
     icon: Mic,
     title: "Speaking",
-    subtitle: "International Presentations",
+    subtitle: "Conference Presentations",
     color: "#00f56b",
     items: eb1Achievements.speakingEngagements,
   },
@@ -64,8 +65,15 @@ const impactStats = [
 ];
 
 export function Achievements() {
+  const { theme } = useTheme();
+
   return (
-    <section id="achievements" className="py-24 bg-[#141414]">
+    <section
+      id="achievements"
+      className={`py-24 transition-colors duration-300 ${
+        theme === "dark" ? "bg-[#141414]" : "bg-gray-50"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -82,10 +90,18 @@ export function Achievements() {
             </span>
             <span className="w-12 h-px bg-[#00f56b]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Impact & Recognition
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p
+            className={`max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
             Demonstrating sustained national and international acclaim through
             original contributions, publications, and leadership in technology.
           </p>
@@ -106,7 +122,11 @@ export function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="bg-[#1a1a1a] rounded-xl p-6 text-center border border-white/5 hover:border-white/10 transition-all"
+              className={`rounded-xl p-6 text-center border transition-all ${
+                theme === "dark"
+                  ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                  : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
+              }`}
             >
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -118,7 +138,13 @@ export function Achievements() {
               >
                 {stat.value}
               </motion.div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
+              <div
+                className={`text-sm ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                {stat.label}
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -133,7 +159,11 @@ export function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="bg-[#1a1a1a] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-all group"
+              className={`rounded-2xl p-6 border transition-all group ${
+                theme === "dark"
+                  ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                  : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
+              }`}
             >
               {/* Category Header */}
               <div className="flex items-center gap-3 mb-5">
@@ -145,7 +175,11 @@ export function Achievements() {
                   <category.icon size={22} style={{ color: category.color }} />
                 </motion.div>
                 <div>
-                  <h3 className="text-white font-semibold text-lg">
+                  <h3
+                    className={`font-semibold text-lg ${
+                      theme === "dark" ? "text-white" : "text-gray-900"
+                    }`}
+                  >
                     {category.title}
                   </h3>
                   <p className="text-gray-500 text-xs">{category.subtitle}</p>
@@ -161,13 +195,21 @@ export function Achievements() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 + i * 0.05 }}
-                    className="text-sm text-gray-400 flex items-start gap-2 group/item"
+                    className={`text-sm flex items-start gap-2 group/item ${
+                      theme === "dark" ? "text-gray-400" : "text-gray-600"
+                    }`}
                   >
                     <span
                       className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all group-hover/item:scale-150"
                       style={{ backgroundColor: category.color }}
                     />
-                    <span className="group-hover/item:text-gray-300 transition-colors">
+                    <span
+                      className={`transition-colors ${
+                        theme === "dark"
+                          ? "group-hover/item:text-gray-300"
+                          : "group-hover/item:text-gray-900"
+                      }`}
+                    >
                       {"title" in item
                         ? item.title
                         : "name" in item

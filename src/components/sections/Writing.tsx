@@ -11,6 +11,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { socialLinks } from "@/lib/data";
+import { useTheme } from "@/context/ThemeContext";
 
 const blogPlatforms = [
   {
@@ -37,8 +38,15 @@ const blogPlatforms = [
 ];
 
 export function Writing() {
+  const { theme } = useTheme();
+
   return (
-    <section id="writing" className="py-24 bg-[#141414]">
+    <section
+      id="writing"
+      className={`py-24 transition-colors duration-300 ${
+        theme === "dark" ? "bg-[#141414]" : "bg-gray-50"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -55,10 +63,18 @@ export function Writing() {
             </span>
             <span className="w-12 h-px bg-[#907aea]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Technical Writing
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p
+            className={`max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
             Articles, tutorials, research publications, and developer resources.
           </p>
         </motion.div>
@@ -75,7 +91,13 @@ export function Writing() {
               <div className="w-10 h-10 rounded-lg bg-[#2ea8ff]/15 flex items-center justify-center">
                 <BookOpen size={20} className="text-[#2ea8ff]" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Publications</h3>
+              <h3
+                className={`text-xl font-semibold ${
+                  theme === "dark" ? "text-white" : "text-gray-900"
+                }`}
+              >
+                Publications
+              </h3>
             </div>
 
             <div className="space-y-4">
@@ -90,7 +112,11 @@ export function Writing() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ x: 5 }}
-                  className="flex items-start justify-between p-5 bg-[#1a1a1a] rounded-xl border border-white/5 hover:border-[#2ea8ff]/30 transition-all group cursor-pointer"
+                  className={`flex items-start justify-between p-5 rounded-xl border transition-all group cursor-pointer ${
+                    theme === "dark"
+                      ? "bg-[#1a1a1a] border-white/5 hover:border-[#2ea8ff]/30"
+                      : "bg-white border-gray-200 hover:border-[#2ea8ff]/50 shadow-sm"
+                  }`}
                 >
                   <div className="flex-1">
                     <span
@@ -102,7 +128,11 @@ export function Writing() {
                     >
                       {pub.type}
                     </span>
-                    <h4 className="text-white font-medium group-hover:text-[#2ea8ff] transition-colors mt-2 leading-relaxed">
+                    <h4
+                      className={`font-medium group-hover:text-[#2ea8ff] transition-colors mt-2 leading-relaxed ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
                       {pub.title}
                     </h4>
                     <p className="text-gray-500 text-sm mt-1">
@@ -131,7 +161,11 @@ export function Writing() {
               <div className="w-10 h-10 rounded-lg bg-[#907aea]/15 flex items-center justify-center">
                 <FileText size={20} className="text-[#907aea]" />
               </div>
-              <h3 className="text-xl font-semibold text-white">
+              <h3
+                className={`text-xl font-semibold ${
+                  theme === "dark" ? "text-white" : "text-gray-900"
+                }`}
+              >
                 Content Platforms
               </h3>
             </div>
@@ -148,7 +182,11 @@ export function Writing() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02, x: 5 }}
-                  className="flex items-center justify-between p-5 bg-[#1a1a1a] rounded-xl border border-white/5 hover:border-white/10 transition-all group"
+                  className={`flex items-center justify-between p-5 rounded-xl border transition-all group ${
+                    theme === "dark"
+                      ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                      : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
+                  }`}
                 >
                   <div className="flex items-center gap-4">
                     <div
@@ -158,7 +196,11 @@ export function Writing() {
                       <platform.icon size={22} />
                     </div>
                     <div>
-                      <h4 className="text-white font-medium group-hover:text-[#2ea8ff] transition-colors">
+                      <h4
+                        className={`font-medium group-hover:text-[#2ea8ff] transition-colors ${
+                          theme === "dark" ? "text-white" : "text-gray-900"
+                        }`}
+                      >
                         {platform.name}
                       </h4>
                       <p className="text-gray-500 text-sm">
@@ -179,12 +221,24 @@ export function Writing() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-6 p-5 bg-gradient-to-br from-[#2ea8ff]/10 to-[#907aea]/10 rounded-xl border border-[#2ea8ff]/20"
+              className={`mt-6 p-5 rounded-xl border ${
+                theme === "dark"
+                  ? "bg-gradient-to-br from-[#2ea8ff]/10 to-[#907aea]/10 border-[#2ea8ff]/20"
+                  : "bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200"
+              }`}
             >
-              <h4 className="text-white font-medium mb-2">
+              <h4
+                className={`font-medium mb-2 ${
+                  theme === "dark" ? "text-white" : "text-gray-900"
+                }`}
+              >
                 Featured on Algorand Developer Portal
               </h4>
-              <p className="text-gray-400 text-sm mb-4">
+              <p
+                className={`text-sm mb-4 ${
+                  theme === "dark" ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
                 Technical tutorials helping developers build on Algorand blockchain.
               </p>
               <div className="flex flex-wrap gap-2">

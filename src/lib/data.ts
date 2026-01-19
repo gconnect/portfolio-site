@@ -2,20 +2,16 @@
 export const personalInfo = {
   name: "Glory Justin",
   nickname: "Agatevure",
-  title: "Protocol Engineer | Backend Developer | Founder",
+  title: "Protocol Engineer | AI Researcher | Founder",
   tagline: "Building the future of decentralized systems",
   location: "Nigeria",
   email: "agatevureglory@gmail.com",
   linkedin: "https://www.linkedin.com/in/glory-agatevure/",
 
   shortBio:
-    "Protocol Engineer at Ethereum Foundation, Backend Developer, and Founder. Building innovative solutions in blockchain, Web3, and mobility tech.",
+    "Protocol & AI Researcher, Software Engineer, Technical Writer, Content Creator, and Founder. Building innovative solutions across blockchain, Web3, AI, and mobility technology.",
 
-  fullBio: `I am a Protocol Engineer currently working with the Ethereum Protocol Fellowship,
-  where I implement critical infrastructure like the Ephemery testnet impacting 50K+ developers.
-  My journey spans from mobile development to backend engineering, with deep expertise in
-  NestJS, GraphQL, and blockchain technologies. I'm also passionate about technical writing
-  and community building, serving as a GDG Organizer and Women Techmaker advocate.`,
+  fullBio: `I’m a Protocol Engineer & Researcher contributing to the Ethereum Protocol, with hands-on work across critical infrastructure including the Ephemery testnet, Execution and Consensus layers, and node operations. My experience spans mobile development to full-stack engineering, with deep expertise in Java, NestJS, and blockchain technologies. Beyond engineering, I’m passionate about technical writing and community building, serving as a GDG Organizer and Women Techmaker advocate.`,
 };
 
 // FOUNDER/STARTUP PROJECTS
@@ -40,7 +36,7 @@ export const founderProjects = [
 export const eb1Achievements = {
   originalContributions: [
     {
-      title: "Ephemery Testnet Implementation",
+      title: "Ephemery Testnet Client Implementation",
       description:
         "Implemented the Ephemery testnet for Teku/Besu Ethereum clients",
       impact: "Impacting 50K+ developers worldwide",
@@ -254,12 +250,12 @@ export const eb1Achievements = {
 
   associations: [
     {
-      name: "Ethereum Protocol Fellow",
+      name: "Ethereum Protocol Fellowship",
       role: "Fellow",
       significance: "Selective fellowship for Ethereum protocol contributors",
     },
     {
-      name: "Gitcoin Kernel Fellow",
+      name: "Gitcoin Kernel Fellowship",
       role: "Fellow",
       significance: "Selective Web3 builder fellowship",
     },
@@ -442,6 +438,7 @@ export const socialLinks = {
   github: "https://github.com/gconnect",
   twitter: "https://x.com/agatevureglory",
   youtube: "https://www.youtube.com/@agatevureglory",
+  instagram: "https://www.instagram.com/agatevureglory/",
   medium: "https://medium.com/@agatevureglory",
   substack: "https://substack.com/@agatevureglory",
 };
@@ -488,11 +485,12 @@ export const communities = [
 
 // SKILLS/TECHNOLOGIES
 export const skills = {
-  languages: ["TypeScript", "JavaScript", "Python", "Java", "Kotlin", "Solidity"],
-  backend: ["NestJS", "Node.js", "GraphQL", "Apollo Federation", "REST APIs"],
+  languages: ["TypeScript", "JavaScript", "Python", "Java", "Kotlin", "Rust", "Solidity"],
+  backend: ["NestJS", "Node.js", "Axum", "Springboot", "GraphQL", "REST APIs"],
   frontend: ["React", "Next.js", "Gatsby", "Tailwind CSS"],
-  blockchain: ["Ethereum", "Algorand", "Celo", "Cartesi", "Web3.js", "Ethers.js"],
+  blockchain: ["Ethereum", "Algorand", "Celo", "Base", "Solana"],
   databases: ["PostgreSQL", "Redis", "MongoDB"],
-  tools: ["Docker", "AWS", "RabbitMQ", "Git", "CI/CD"],
-  mobile: ["Android (Java/Kotlin)", "Flutter"],
+  tools: ["Docker", "GCP", "AWS", "RabbitMQ", "Git", "CI/CD"],
+  mobile: ["Android (Java/Kotlin)", "Flutter",],
 };
+

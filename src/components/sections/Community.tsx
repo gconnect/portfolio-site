@@ -3,10 +3,18 @@
 import { motion } from "framer-motion";
 import { communities } from "@/lib/data";
 import { Users, ExternalLink, Crown, Heart } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 export function Community() {
+  const { theme } = useTheme();
+
   return (
-    <section id="community" className="py-24 bg-[#0a0a0a]">
+    <section
+      id="community"
+      className={`py-24 transition-colors duration-300 ${
+        theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -23,10 +31,18 @@ export function Community() {
             </span>
             <span className="w-12 h-px bg-[#fa3d8c]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Communities I Lead
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p
+            className={`max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
             Building and nurturing tech communities across Africa. Passionate about
             empowering developers and creating inclusive spaces for growth.
           </p>
@@ -49,7 +65,11 @@ export function Community() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="bg-[#141414] rounded-xl p-6 border border-white/5 hover:border-white/10 transition-all group relative overflow-hidden block"
+                className={`rounded-xl p-6 border transition-all group relative overflow-hidden block ${
+                  theme === "dark"
+                    ? "bg-[#141414] border-white/5 hover:border-white/10"
+                    : "bg-gray-50 border-gray-200 hover:border-gray-300 shadow-sm"
+                }`}
               >
                 {/* Background gradient on hover */}
                 <div
@@ -75,7 +95,11 @@ export function Community() {
                         />
                       </div>
                       <div>
-                        <h3 className="text-xl font-semibold text-white group-hover:text-[#2ea8ff] transition-colors">
+                        <h3
+                          className={`text-xl font-semibold group-hover:text-[#2ea8ff] transition-colors ${
+                            theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                        >
                           {community.name}
                         </h3>
                         <span
@@ -97,7 +121,11 @@ export function Community() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p
+                    className={`text-sm leading-relaxed ${
+                      theme === "dark" ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
                     {community.description}
                   </p>
                 </div>
@@ -131,31 +159,65 @@ export function Community() {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="bg-gradient-to-r from-[#fa3d8c]/10 via-[#907aea]/10 to-[#2ea8ff]/10 rounded-2xl p-8 border border-white/5">
+          <div
+            className={`rounded-2xl p-8 border ${
+              theme === "dark"
+                ? "bg-gradient-to-r from-[#fa3d8c]/10 via-[#907aea]/10 to-[#2ea8ff]/10 border-white/5"
+                : "bg-gradient-to-r from-pink-50 via-purple-50 to-blue-50 border-gray-200"
+            }`}
+          >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                <div
+                  className={`text-3xl md:text-4xl font-bold mb-1 ${
+                    theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   4+
                 </div>
-                <div className="text-gray-400 text-sm">Communities</div>
+                <div
+                  className={`text-sm ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  Communities
+                </div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-[#00f56b] mb-1">
                   1
                 </div>
-                <div className="text-gray-400 text-sm">Founded</div>
+                <div
+                  className={`text-sm ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  Founded
+                </div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-[#2ea8ff] mb-1">
                   5+
                 </div>
-                <div className="text-gray-400 text-sm">Years Leading</div>
+                <div
+                  className={`text-sm ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  Years Leading
+                </div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-[#fa3d8c] mb-1">
                   1000+
                 </div>
-                <div className="text-gray-400 text-sm">Developers Reached</div>
+                <div
+                  className={`text-sm ${
+                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  }`}
+                >
+                  Developers Reached
+                </div>
               </div>
             </div>
           </div>

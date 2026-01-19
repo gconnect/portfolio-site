@@ -15,18 +15,22 @@ import {
   Loader2,
   CheckCircle,
   AlertCircle,
+  Instagram
 } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const socialIcons = [
   { icon: Linkedin, url: socialLinks.linkedin, label: "LinkedIn", color: "#0077b5" },
   { icon: Github, url: socialLinks.github, label: "GitHub", color: "#333" },
   { icon: Twitter, url: socialLinks.twitter, label: "Twitter", color: "#1da1f2" },
   { icon: Youtube, url: socialLinks.youtube, label: "YouTube", color: "#ff0000" },
+  { icon: Instagram, url: socialLinks.instagram, label: "Instagram", color: "#E1306C" },
 ];
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 export function Contact() {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -82,11 +86,21 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#0a0a0a] relative overflow-hidden">
+    <section
+      id="contact"
+      className={`py-24 relative overflow-hidden transition-colors duration-300 ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+        }`}
+    >
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#2ea8ff]/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#907aea]/10 rounded-full blur-[120px]" />
+        <div
+          className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#2ea8ff]/10" : "bg-[#2ea8ff]/5"
+            }`}
+        />
+        <div
+          className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#907aea]/10" : "bg-[#907aea]/5"
+            }`}
+        />
       </div>
 
       <div className="max-w-4xl mx-auto px-6 relative z-10">
@@ -105,10 +119,16 @@ export function Contact() {
             </span>
             <span className="w-12 h-px bg-[#2ea8ff]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+          >
             Let&apos;s Connect
           </h2>
-          <p className="text-gray-400 max-w-lg mx-auto">
+          <p
+            className={`max-w-lg mx-auto ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
+          >
             Open to discussing protocol engineering, Web3 development, speaking
             opportunities, or collaboration on interesting projects.
           </p>
@@ -119,7 +139,10 @@ export function Contact() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-[#141414] rounded-2xl p-8 md:p-12 border border-white/5"
+          className={`rounded-2xl p-8 md:p-12 border ${theme === "dark"
+              ? "bg-[#141414] border-white/5"
+              : "bg-gray-50 border-gray-200"
+            }`}
         >
           <div className="grid md:grid-cols-2 gap-8">
             {/* Left: Contact Info */}
@@ -139,22 +162,7 @@ export function Contact() {
               </div>
 
               <div className="space-y-4">
-                {/* Email */}
-                <motion.a
-                  href={`mailto:${personalInfo.email}`}
-                  whileHover={{ x: 5 }}
-                  className="flex items-center gap-4 p-4 bg-[#1a1a1a] rounded-xl hover:bg-[#1a1a1a]/80 transition-all group"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-[#2ea8ff]/15 flex items-center justify-center group-hover:bg-[#2ea8ff]/25 transition-colors">
-                    <Mail size={18} className="text-[#2ea8ff]" />
-                  </div>
-                  <div>
-                    <p className="text-gray-500 text-xs">Email</p>
-                    <p className="text-white group-hover:text-[#2ea8ff] transition-colors">
-                      {personalInfo.email}
-                    </p>
-                  </div>
-                </motion.a>
+
 
                 {/* Location */}
                 <div className="flex items-center gap-4 p-4 bg-[#1a1a1a] rounded-xl">
@@ -286,11 +294,10 @@ export function Contact() {
                   disabled={status === "loading"}
                   whileHover={{ scale: status === "loading" ? 1 : 1.02 }}
                   whileTap={{ scale: status === "loading" ? 1 : 0.98 }}
-                  className={`w-full py-3 font-medium rounded-xl transition-all flex items-center justify-center gap-2 ${
-                    status === "loading"
+                  className={`w-full py-3 font-medium rounded-xl transition-all flex items-center justify-center gap-2 ${status === "loading"
                       ? "bg-[#2ea8ff]/50 text-black/50 cursor-not-allowed"
                       : "bg-[#2ea8ff] text-black hover:bg-[#2ea8ff]/90 hover:shadow-[0_0_20px_rgba(46,168,255,0.4)]"
-                  }`}
+                    }`}
                 >
                   {status === "loading" ? (
                     <>

@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
 import { socialLinks } from "@/lib/data";
 
 const footerLinks = [
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
   { name: "Achievements", href: "#achievements" },
   { name: "Speaking", href: "#speaking" },
   { name: "Writing", href: "#writing" },
+  { name: "Community", href: "#community" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -19,6 +19,7 @@ const socialIcons = [
   { icon: Linkedin, href: socialLinks.linkedin, label: "LinkedIn" },
   { icon: Twitter, href: socialLinks.twitter, label: "Twitter" },
   { icon: Youtube, href: socialLinks.youtube, label: "YouTube" },
+  { icon: Instagram, href: socialLinks.instagram, label: "Instagram" },
 ];
 
 export function Footer() {
@@ -32,7 +33,7 @@ export function Footer() {
               Glory<span className="text-[#2ea8ff]">.</span>
             </Link>
             <p className="mt-4 text-gray-400 text-sm max-w-xs">
-              Protocol Engineer, Backend Developer, and Technical Writer
+              Protocol Engineer, AI Researcher, and Technical Writer
               building the future of decentralized systems.
             </p>
           </div>

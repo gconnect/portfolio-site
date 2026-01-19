@@ -1,5 +1,8 @@
+"use client";
+
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ThemedMain } from "@/components/layout/ThemedMain";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Achievements } from "@/components/sections/Achievements";
@@ -10,7 +13,7 @@ import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] min-h-screen">
+    <ThemedMain>
       <Header />
       <Hero />
       <About />
@@ -20,6 +23,6 @@ export default function Home() {
       <Writing />
       <Contact />
       <Footer />
-    </main>
+    </ThemedMain>
   );
 }

@@ -18,6 +18,7 @@ import {
   Calendar,
   Award,
 } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const typeConfig = {
   Speaker: { color: "#2ea8ff", icon: Mic },
@@ -40,6 +41,7 @@ type SpeakingEvent = {
 };
 
 export function Speaking() {
+  const { theme } = useTheme();
   const [selectedEvent, setSelectedEvent] = useState<SpeakingEvent | null>(null);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [expandedYears, setExpandedYears] = useState<number[]>([]);
@@ -101,7 +103,12 @@ export function Speaking() {
   };
 
   return (
-    <section id="speaking" className="py-24 bg-[#0a0a0a]">
+    <section
+      id="speaking"
+      className={`py-24 transition-colors duration-300 ${
+        theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <motion.div
@@ -118,10 +125,18 @@ export function Speaking() {
             </span>
             <span className="w-12 h-px bg-[#f5bc00]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
             Conferences & Events
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p
+            className={`max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
             Sharing knowledge at international conferences and community events
             across the globe. Click on a year to view events.
           </p>
@@ -139,15 +154,25 @@ export function Speaking() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: yearIndex * 0.05 }}
-                className="border border-white/10 rounded-xl overflow-hidden bg-[#141414]"
+                className={`border rounded-xl overflow-hidden ${
+                  theme === "dark"
+                    ? "border-white/10 bg-[#141414]"
+                    : "border-gray-200 bg-gray-50"
+                }`}
               >
                 {/* Year Header - Clickable */}
                 <button
                   onClick={() => toggleYear(year)}
-                  className="w-full flex items-center justify-between p-5 hover:bg-white/5 transition-colors"
+                  className={`w-full flex items-center justify-between p-5 transition-colors ${
+                    theme === "dark" ? "hover:bg-white/5" : "hover:bg-gray-100"
+                  }`}
                 >
                   <div className="flex items-center gap-4">
-                    <span className="text-2xl md:text-3xl font-bold text-white">
+                    <span
+                      className={`text-2xl md:text-3xl font-bold ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
                       {year}
                     </span>
                     <span className="text-sm text-gray-500 font-mono">
@@ -193,8 +218,12 @@ export function Speaking() {
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: index * 0.05 }}
-                              className={`bg-[#1a1a1a] rounded-xl p-5 border border-white/5 hover:border-white/10 transition-all group relative overflow-hidden ${
+                              className={`rounded-xl p-5 border transition-all group relative overflow-hidden ${
                                 hasLink ? "cursor-pointer" : ""
+                              } ${
+                                theme === "dark"
+                                  ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                                  : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
                               }`}
                               onClick={handleCardClick}
                             >
@@ -225,12 +254,20 @@ export function Speaking() {
                                 </div>
 
                                 {/* Event Name */}
-                                <h3 className="text-lg font-semibold text-white mb-1.5 group-hover:text-[#2ea8ff] transition-colors">
+                                <h3
+                                  className={`text-lg font-semibold mb-1.5 group-hover:text-[#2ea8ff] transition-colors ${
+                                    theme === "dark" ? "text-white" : "text-gray-900"
+                                  }`}
+                                >
                                   {event.event}
                                 </h3>
 
                                 {/* Topic */}
-                                <p className="text-gray-400 text-sm mb-3 leading-relaxed line-clamp-2">
+                                <p
+                                  className={`text-sm mb-3 leading-relaxed line-clamp-2 ${
+                                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  }`}
+                                >
                                   {event.topic}
                                 </p>
 
@@ -248,7 +285,11 @@ export function Speaking() {
                                         e.stopPropagation();
                                         openGallery(event);
                                       }}
-                                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all"
+                                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+                                        theme === "dark"
+                                          ? "bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white"
+                                          : "bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900"
+                                      }`}
                                     >
                                       <ImageIcon size={14} />
                                       View Photos ({event.photos?.length})
@@ -283,13 +324,26 @@ export function Speaking() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <div className="bg-gradient-to-r from-[#2ea8ff]/10 via-[#907aea]/10 to-[#00f56b]/10 rounded-2xl p-8 border border-white/5">
-            <h3 className="text-xl font-semibold text-white mb-3">
+          <div
+            className={`rounded-2xl p-8 border ${
+              theme === "dark"
+                ? "bg-gradient-to-r from-[#2ea8ff]/10 via-[#907aea]/10 to-[#00f56b]/10 border-white/5"
+                : "bg-gradient-to-r from-blue-50 via-purple-50 to-green-50 border-gray-200"
+            }`}
+          >
+            <h3
+              className={`text-xl font-semibold mb-3 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
               Interested in having me speak?
             </h3>
-            <p className="text-gray-400 mb-6 max-w-lg mx-auto">
-              I speak about blockchain protocols, Web3 development, backend
-              architecture, and building inclusive tech communities.
+            <p
+              className={`mb-6 max-w-lg mx-auto ${
+                theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              I speak about blockchain protocols, Web3 development, Cloud infrastructure, AI, and building inclusive tech communities.
             </p>
             <a
               href="#contact"
