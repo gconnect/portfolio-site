@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { eb1Achievements } from "@/lib/data";
 import {
   BookOpen,
@@ -9,8 +11,28 @@ import {
   Trophy,
   Building,
   Sparkles,
+  ImageIcon,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+
+// Define a union type for all possible item shapes
+type AchievementItem = {
+  title?: string;
+  name?: string;
+  event?: string;
+  role?: string;
+  url?: string;
+  link?: string;
+  organization?: string;
+  photos?: string[];
+  [key: string]: any;
+};
 
 const achievementCategories = [
   {
@@ -66,13 +88,64 @@ const impactStats = [
 
 export function Achievements() {
   const { theme } = useTheme();
+  const [selectedItem, setSelectedItem] = useState<AchievementItem | null>(null);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [expandedCategories, setExpandedCategories] = useState<
+    Record<string, boolean>
+  >({});
+
+  // Helper to extract common props from diverse item types
+  const getItemProps = (item: AchievementItem) => {
+    const label = item.title || item.name || item.event || item.role || "";
+    // Check various link properties; for organization, strictly check if it looks like a URL
+    const href =
+      item.url ||
+      item.link ||
+      (item.organization?.startsWith("http") ? item.organization : undefined);
+    const photos = item.photos || [];
+    return { label, href, photos };
+  };
+
+  const openGallery = (item: AchievementItem) => {
+    if (item.photos && item.photos.length > 0) {
+      setSelectedItem(item);
+      setCurrentPhotoIndex(0);
+    }
+  };
+
+  const closeGallery = () => {
+    setSelectedItem(null);
+    setCurrentPhotoIndex(0);
+  };
+
+  const nextPhoto = () => {
+    if (selectedItem?.photos) {
+      setCurrentPhotoIndex((prev) =>
+        prev === selectedItem.photos!.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevPhoto = () => {
+    if (selectedItem?.photos) {
+      setCurrentPhotoIndex((prev) =>
+        prev === 0 ? selectedItem.photos!.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const toggleCategory = (title: string) => {
+    setExpandedCategories((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
 
   return (
     <section
       id="achievements"
-      className={`py-24 transition-colors duration-300 ${
-        theme === "dark" ? "bg-[#141414]" : "bg-gray-50"
-      }`}
+      className={`py-24 transition-colors duration-300 ${theme === "dark" ? "bg-[#141414]" : "bg-gray-50"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
@@ -91,16 +164,14 @@ export function Achievements() {
             <span className="w-12 h-px bg-[#00f56b]" />
           </div>
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
+            className={`text-4xl md:text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
           >
             Impact & Recognition
           </h2>
           <p
-            className={`max-w-2xl mx-auto ${
-              theme === "dark" ? "text-gray-400" : "text-gray-600"
-            }`}
+            className={`max-w-2xl mx-auto ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
           >
             Demonstrating sustained national and international acclaim through
             original contributions, publications, and leadership in technology.
@@ -122,11 +193,10 @@ export function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className={`rounded-xl p-6 text-center border transition-all ${
-                theme === "dark"
-                  ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
-                  : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
-              }`}
+              className={`rounded-xl p-6 text-center border transition-all ${theme === "dark"
+                ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
+                }`}
             >
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -139,9 +209,8 @@ export function Achievements() {
                 {stat.value}
               </motion.div>
               <div
-                className={`text-sm ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
+                className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                  }`}
               >
                 {stat.label}
               </div>
@@ -159,11 +228,10 @@ export function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className={`rounded-2xl p-6 border transition-all group ${
-                theme === "dark"
-                  ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
-                  : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
-              }`}
+              className={`rounded-2xl p-6 border transition-all group ${theme === "dark"
+                ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
+                }`}
             >
               {/* Category Header */}
               <div className="flex items-center gap-3 mb-5">
@@ -176,9 +244,8 @@ export function Achievements() {
                 </motion.div>
                 <div>
                   <h3
-                    className={`font-semibold text-lg ${
-                      theme === "dark" ? "text-white" : "text-gray-900"
-                    }`}
+                    className={`font-semibold text-lg ${theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
                   >
                     {category.title}
                   </h3>
@@ -188,51 +255,200 @@ export function Achievements() {
 
               {/* Items */}
               <ul className="space-y-3">
-                {category.items.slice(0, 3).map((item, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + i * 0.05 }}
-                    className={`text-sm flex items-start gap-2 group/item ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    <span
-                      className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all group-hover/item:scale-150"
-                      style={{ backgroundColor: category.color }}
-                    />
-                    <span
-                      className={`transition-colors ${
-                        theme === "dark"
-                          ? "group-hover/item:text-gray-300"
-                          : "group-hover/item:text-gray-900"
-                      }`}
-                    >
-                      {"title" in item
-                        ? item.title
-                        : "name" in item
-                        ? item.name
-                        : "event" in item
-                        ? item.event
-                        : "role" in item
-                        ? item.role
-                        : ""}
-                    </span>
-                  </motion.li>
-                ))}
+                {category.items
+                  .slice(
+                    0,
+                    expandedCategories[category.title] ? undefined : 3
+                  )
+                  .map((item, i) => {
+                    const { label, href, photos } = getItemProps(item);
+                    return (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 + i * 0.05 }}
+                        className={`text-sm flex items-start gap-2 group/item ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                          }`}
+                      >
+                        <span
+                          className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-all group-hover/item:scale-150"
+                          style={{ backgroundColor: category.color }}
+                        />
+
+                        <div className="flex-1 min-w-0">
+                          {href ? (
+                            <a
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`flex items-center gap-1 transition-colors hover:underline decoration-1 underline-offset-4 ${theme === "dark"
+                                ? "group-hover/item:text-gray-300 hover:text-[#2ea8ff]"
+                                : "group-hover/item:text-gray-900 hover:text-[#2ea8ff]"
+                                }`}
+                            >
+                              <span className="truncate">{label}</span>
+                              <ExternalLink
+                                size={10}
+                                className="flex-shrink-0 opacity-50"
+                              />
+                            </a>
+                          ) : (
+                            <span
+                              className={`transition-colors ${theme === "dark"
+                                ? "group-hover/item:text-gray-300"
+                                : "group-hover/item:text-gray-900"
+                                }`}
+                            >
+                              {label}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Photo Button */}
+                        {photos.length > 0 && (
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              openGallery(item);
+                            }}
+                            className={`p-1 rounded-full transition-colors flex-shrink-0 ${theme === "dark"
+                              ? "bg-white/5 hover:bg-white/20 text-gray-400 hover:text-white"
+                              : "bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-black"
+                              }`}
+                            title="View photos"
+                          >
+                            <ImageIcon size={12} />
+                          </button>
+                        )}
+                      </motion.li>
+                    );
+                  })}
                 {category.items.length > 3 && (
-                  <li className="text-xs text-gray-500 pt-1">
-                    +{category.items.length - 3} more achievements
+                  <li className="pt-1">
+                    <button
+                      onClick={() => toggleCategory(category.title)}
+                      className={`text-xs flex items-center gap-1 transition-colors ${theme === "dark"
+                        ? "text-gray-500 hover:text-gray-300"
+                        : "text-gray-500 hover:text-gray-700"
+                        }`}
+                    >
+                      {expandedCategories[category.title] ? (
+                        <>
+                          Show less <ChevronUp size={12} />
+                        </>
+                      ) : (
+                        <>
+                          +{category.items.length - 3} more achievements{" "}
+                          <ChevronDown size={12} />
+                        </>
+                      )}
+                    </button>
                   </li>
                 )}
               </ul>
             </motion.div>
           ))}
         </div>
-
       </div>
+
+      {/* Photo Gallery Modal */}
+      <AnimatePresence>
+        {selectedItem && selectedItem.photos && selectedItem.photos.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={closeGallery}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-4xl w-full bg-[#141414] rounded-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                <div className="flex-1">
+                  <h3 className="text-white font-semibold flex items-center gap-2">
+                    {getItemProps(selectedItem).label}
+                  </h3>
+                </div>
+                <button
+                  onClick={closeGallery}
+                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                >
+                  <X size={20} className="text-white" />
+                </button>
+              </div>
+
+              {/* Image Container */}
+              <div className="relative aspect-video bg-black flex items-center justify-center">
+                <Image
+                  src={selectedItem.photos[currentPhotoIndex]}
+                  alt={`Photo ${currentPhotoIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/images/placeholder-event.jpg";
+                  }}
+                />
+
+                {/* Navigation arrows */}
+                {selectedItem.photos.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevPhoto}
+                      className="absolute left-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                    >
+                      <ChevronLeft size={24} className="text-white" />
+                    </button>
+                    <button
+                      onClick={nextPhoto}
+                      className="absolute right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                    >
+                      <ChevronRight size={24} className="text-white" />
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Photo counter */}
+              <div className="p-4 text-center text-gray-400 text-sm">
+                {currentPhotoIndex + 1} / {selectedItem.photos.length}
+              </div>
+
+              {/* Thumbnail strip */}
+              {selectedItem.photos.length > 1 && (
+                <div className="p-4 pt-0 flex justify-center gap-2 overflow-x-auto">
+                  {selectedItem.photos.map((photo, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentPhotoIndex(idx)}
+                      className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${idx === currentPhotoIndex
+                        ? "border-[#2ea8ff]"
+                        : "border-transparent opacity-50 hover:opacity-100"
+                        }`}
+                    >
+                      <Image
+                        src={photo}
+                        alt={`Thumbnail ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
