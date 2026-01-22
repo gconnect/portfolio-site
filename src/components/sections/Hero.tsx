@@ -194,7 +194,7 @@ export function Hero() {
                 }`}
             >
               <Image
-                src="/images/profile.jpg"
+                src="/images/profile.png"
                 alt="Glory Justin"
                 fill
                 className="object-cover profile-image"
