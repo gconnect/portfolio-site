@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { eb1Achievements } from "@/lib/data";
+import { Zap } from "lucide-react";
 import {
   BookOpen,
   Users,
@@ -18,10 +19,13 @@ import {
   ChevronDown,
   ChevronUp,
   ExternalLink,
+  Scale,
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
 // Define a union type for all possible item shapes
+type EvidenceItem = { photo: string; link: string };
+
 type AchievementItem = {
   title?: string;
   name?: string;
@@ -31,7 +35,8 @@ type AchievementItem = {
   link?: string;
   organization?: string;
   photos?: string[];
-  [key: string]: any;
+  evidence?: string | EvidenceItem[];
+  [key: string]: unknown;
 };
 
 const achievementCategories = [
@@ -64,6 +69,13 @@ const achievementCategories = [
     items: eb1Achievements.awards,
   },
   {
+    icon: Zap,
+    title: "Hackathon Wins",
+    subtitle: "Competition Victories",
+    color: "#ff6b35",
+    items: eb1Achievements.hackathonWins,
+  },
+  {
     icon: Users,
     title: "Associations",
     subtitle: "Professional Memberships",
@@ -77,14 +89,15 @@ const achievementCategories = [
     color: "#2ea8ff",
     items: eb1Achievements.leadershipRoles,
   },
+  {
+    icon: Scale,
+    title: "Judging & Review",
+    subtitle: "Expert Evaluation",
+    color: "#14b8a6",
+    items: eb1Achievements.judgingExperience,
+  },
 ];
 
-const impactStats = [
-  { value: "50K+", label: "Developers Impacted", color: "#2ea8ff" },
-  { value: "$2M+", label: "Trading Volume Enabled", color: "#907aea" },
-  { value: "100K+", label: "Transactions Processed", color: "#00f56b" },
-  { value: "300%", label: "Engagement Growth", color: "#f5bc00" },
-];
 
 export function Achievements() {
   const { theme } = useTheme();
@@ -97,17 +110,35 @@ export function Achievements() {
   // Helper to extract common props from diverse item types
   const getItemProps = (item: AchievementItem) => {
     const label = item.title || item.name || item.event || item.role || "";
+
+    // Handle photos from different sources: photos array or evidence array
+    let photos: string[] = [];
+    let photoLinks: string[] = [];
+
+    if (item.photos && item.photos.length > 0) {
+      photos = item.photos;
+      photoLinks = item.photos.map(() => ""); // No individual links for regular photos
+    } else if (Array.isArray(item.evidence)) {
+      const evidenceItems = item.evidence as EvidenceItem[];
+      photos = evidenceItems.map(e => e.photo);
+      photoLinks = evidenceItems.map(e => e.link || "");
+    }
+
     // Check various link properties; for organization, strictly check if it looks like a URL
+    // Also use the first evidence link if no top-level link exists
+    const firstEvidenceLink = photoLinks.find(link => link && link.length > 0);
     const href =
       item.url ||
       item.link ||
-      (item.organization?.startsWith("http") ? item.organization : undefined);
-    const photos = item.photos || [];
-    return { label, href, photos };
+      (typeof item.organization === 'string' && item.organization?.startsWith("http") ? item.organization : undefined) ||
+      firstEvidenceLink;
+
+    return { label, href, photos, photoLinks };
   };
 
   const openGallery = (item: AchievementItem) => {
-    if (item.photos && item.photos.length > 0) {
+    const { photos } = getItemProps(item);
+    if (photos.length > 0) {
       setSelectedItem(item);
       setCurrentPhotoIndex(0);
     }
@@ -119,18 +150,24 @@ export function Achievements() {
   };
 
   const nextPhoto = () => {
-    if (selectedItem?.photos) {
-      setCurrentPhotoIndex((prev) =>
-        prev === selectedItem.photos!.length - 1 ? 0 : prev + 1
-      );
+    if (selectedItem) {
+      const { photos } = getItemProps(selectedItem);
+      if (photos.length > 0) {
+        setCurrentPhotoIndex((prev) =>
+          prev === photos.length - 1 ? 0 : prev + 1
+        );
+      }
     }
   };
 
   const prevPhoto = () => {
-    if (selectedItem?.photos) {
-      setCurrentPhotoIndex((prev) =>
-        prev === 0 ? selectedItem.photos!.length - 1 : prev - 1
-      );
+    if (selectedItem) {
+      const { photos } = getItemProps(selectedItem);
+      if (photos.length > 0) {
+        setCurrentPhotoIndex((prev) =>
+          prev === 0 ? photos.length - 1 : prev - 1
+        );
+      }
     }
   };
 
@@ -147,7 +184,7 @@ export function Achievements() {
       className={`py-24 transition-colors duration-300 ${theme === "dark" ? "bg-[#141414]" : "bg-gray-50"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -164,13 +201,13 @@ export function Achievements() {
             <span className="w-12 h-px bg-[#00f56b]" />
           </div>
           <h2
-            className={`text-4xl md:text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
+            className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
               }`}
           >
             Impact & Recognition
           </h2>
           <p
-            className={`max-w-2xl mx-auto ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+            className={`max-w-2xl mx-auto text-sm sm:text-base ${theme === "dark" ? "text-gray-400" : "text-gray-600"
               }`}
           >
             Demonstrating sustained national and international acclaim through
@@ -178,48 +215,8 @@ export function Achievements() {
           </p>
         </motion.div>
 
-        {/* Impact Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16"
-        >
-          {impactStats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -5 }}
-              className={`rounded-xl p-6 text-center border transition-all ${theme === "dark"
-                ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
-                : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
-                }`}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 + 0.2 }}
-                className="text-3xl md:text-4xl font-bold mb-2"
-                style={{ color: stat.color }}
-              >
-                {stat.value}
-              </motion.div>
-              <div
-                className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"
-                  }`}
-              >
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Achievement Categories Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {achievementCategories.map((category, index) => (
             <motion.div
               key={category.title}
@@ -228,28 +225,29 @@ export function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className={`rounded-2xl p-6 border transition-all group ${theme === "dark"
+              className={`rounded-2xl p-4 sm:p-6 border transition-all group overflow-hidden ${theme === "dark"
                 ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
                 : "bg-white border-gray-200 hover:border-gray-300 shadow-sm"
                 }`}
             >
               {/* Category Header */}
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4 sm:mb-5">
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="w-12 h-12 rounded-xl flex items-center justify-center transition-all"
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all flex-shrink-0"
                   style={{ backgroundColor: `${category.color}15` }}
                 >
-                  <category.icon size={22} style={{ color: category.color }} />
+                  <category.icon size={20} className="sm:hidden" style={{ color: category.color }} />
+                  <category.icon size={22} className="hidden sm:block" style={{ color: category.color }} />
                 </motion.div>
-                <div>
+                <div className="min-w-0">
                   <h3
-                    className={`font-semibold text-lg ${theme === "dark" ? "text-white" : "text-gray-900"
+                    className={`font-semibold text-base sm:text-lg truncate ${theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
                   >
                     {category.title}
                   </h3>
-                  <p className="text-gray-500 text-xs">{category.subtitle}</p>
+                  <p className="text-gray-500 text-xs truncate">{category.subtitle}</p>
                 </div>
               </div>
 
@@ -277,7 +275,7 @@ export function Achievements() {
                           style={{ backgroundColor: category.color }}
                         />
 
-                        <div className="flex-1 min-w-0">
+                        <div className="flex-1 min-w-0 overflow-hidden">
                           {href ? (
                             <a
                               href={href}
@@ -288,7 +286,7 @@ export function Achievements() {
                                 : "group-hover/item:text-gray-900 hover:text-[#2ea8ff]"
                                 }`}
                             >
-                              <span className="truncate">{label}</span>
+                              <span className="break-words line-clamp-2">{label}</span>
                               <ExternalLink
                                 size={10}
                                 className="flex-shrink-0 opacity-50"
@@ -296,7 +294,7 @@ export function Achievements() {
                             </a>
                           ) : (
                             <span
-                              className={`transition-colors ${theme === "dark"
+                              className={`break-words line-clamp-2 transition-colors ${theme === "dark"
                                 ? "group-hover/item:text-gray-300"
                                 : "group-hover/item:text-gray-900"
                                 }`}
@@ -356,98 +354,114 @@ export function Achievements() {
 
       {/* Photo Gallery Modal */}
       <AnimatePresence>
-        {selectedItem && selectedItem.photos && selectedItem.photos.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={closeGallery}
-          >
+        {selectedItem && (() => {
+          const { label, photos, photoLinks } = getItemProps(selectedItem);
+          const currentLink = photoLinks[currentPhotoIndex];
+          return photos.length > 0 && (
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative max-w-4xl w-full bg-[#141414] rounded-2xl overflow-hidden"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+              onClick={closeGallery}
             >
-              {/* Header */}
-              <div className="p-4 border-b border-white/5 flex items-center justify-between">
-                <div className="flex-1">
-                  <h3 className="text-white font-semibold flex items-center gap-2">
-                    {getItemProps(selectedItem).label}
-                  </h3>
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="relative max-w-4xl w-full bg-[#141414] rounded-2xl overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Header */}
+                <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                  <div className="flex-1">
+                    <h3 className="text-white font-semibold flex items-center gap-2">
+                      {label}
+                    </h3>
+                  </div>
+                  <button
+                    onClick={closeGallery}
+                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                  >
+                    <X size={20} className="text-white" />
+                  </button>
                 </div>
-                <button
-                  onClick={closeGallery}
-                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
-                >
-                  <X size={20} className="text-white" />
-                </button>
-              </div>
 
-              {/* Image Container */}
-              <div className="relative aspect-video bg-black flex items-center justify-center">
-                <Image
-                  src={selectedItem.photos[currentPhotoIndex]}
-                  alt={`Photo ${currentPhotoIndex + 1}`}
-                  fill
-                  className="object-contain"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-event.jpg";
-                  }}
-                />
+                {/* Image Container */}
+                <div className="relative aspect-video bg-black flex items-center justify-center">
+                  <Image
+                    src={photos[currentPhotoIndex]}
+                    alt={`Photo ${currentPhotoIndex + 1}`}
+                    fill
+                    className="object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/images/placeholder-event.jpg";
+                    }}
+                  />
 
-                {/* Navigation arrows */}
-                {selectedItem.photos.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevPhoto}
-                      className="absolute left-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                  {/* Navigation arrows */}
+                  {photos.length > 1 && (
+                    <>
+                      <button
+                        onClick={prevPhoto}
+                        className="absolute left-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                      >
+                        <ChevronLeft size={24} className="text-white" />
+                      </button>
+                      <button
+                        onClick={nextPhoto}
+                        className="absolute right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                      >
+                        <ChevronRight size={24} className="text-white" />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Photo counter and link */}
+                <div className="p-4 text-center">
+                  <span className="text-gray-400 text-sm">
+                    {currentPhotoIndex + 1} / {photos.length}
+                  </span>
+                  {currentLink && (
+                    <a
+                      href={currentLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-4 inline-flex items-center gap-1 text-[#2ea8ff] text-sm hover:underline"
                     >
-                      <ChevronLeft size={24} className="text-white" />
-                    </button>
-                    <button
-                      onClick={nextPhoto}
-                      className="absolute right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
-                    >
-                      <ChevronRight size={24} className="text-white" />
-                    </button>
-                  </>
+                      View Source <ExternalLink size={12} />
+                    </a>
+                  )}
+                </div>
+
+                {/* Thumbnail strip */}
+                {photos.length > 1 && (
+                  <div className="p-4 pt-0 flex justify-center gap-2 overflow-x-auto">
+                    {photos.map((photo, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrentPhotoIndex(idx)}
+                        className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${idx === currentPhotoIndex
+                          ? "border-[#2ea8ff]"
+                          : "border-transparent opacity-50 hover:opacity-100"
+                          }`}
+                      >
+                        <Image
+                          src={photo}
+                          alt={`Thumbnail ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
                 )}
-              </div>
-
-              {/* Photo counter */}
-              <div className="p-4 text-center text-gray-400 text-sm">
-                {currentPhotoIndex + 1} / {selectedItem.photos.length}
-              </div>
-
-              {/* Thumbnail strip */}
-              {selectedItem.photos.length > 1 && (
-                <div className="p-4 pt-0 flex justify-center gap-2 overflow-x-auto">
-                  {selectedItem.photos.map((photo, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentPhotoIndex(idx)}
-                      className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${idx === currentPhotoIndex
-                        ? "border-[#2ea8ff]"
-                        : "border-transparent opacity-50 hover:opacity-100"
-                        }`}
-                    >
-                      <Image
-                        src={photo}
-                        alt={`Thumbnail ${idx + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          );
+        })()}
       </AnimatePresence>
     </section>
   );

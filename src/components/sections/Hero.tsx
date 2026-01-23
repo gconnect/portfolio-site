@@ -80,7 +80,7 @@ export function Hero() {
             className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
               }`}
           >
-            Glory Justin
+            Glory A. Justin
           </motion.h1>
 
           {/* Dual identity */}
@@ -122,8 +122,8 @@ export function Hero() {
             <a
               href="#contact"
               className={`px-6 py-3 border rounded-full transition-all duration-300 ${theme === "dark"
-                  ? "border-white/20 text-white hover:bg-white/5 hover:border-white/40"
-                  : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
+                ? "border-white/20 text-white hover:bg-white/5 hover:border-white/40"
+                : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
                 }`}
             >
               Contact Me
@@ -153,8 +153,8 @@ export function Hero() {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className={`w-10 h-10 rounded-full flex items-center justify-center hover:text-[#2ea8ff] transition-all ${theme === "dark"
-                      ? "bg-white/5 text-gray-400 hover:bg-white/10"
-                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                    ? "bg-white/5 text-gray-400 hover:bg-white/10"
+                    : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                     }`}
                   aria-label={social.label}
                 >
@@ -173,7 +173,7 @@ export function Hero() {
           className="relative order-1 lg:order-2"
         >
           {/* Main image container */}
-          <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[450px] md:h-[450px] lg:w-[520px] lg:h-[520px] mx-auto">
             {/* Animated gradient ring */}
             <motion.div
               animate={{ rotate: 360 }}
@@ -189,8 +189,8 @@ export function Hero() {
             {/* Profile image */}
             <div
               className={`absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br ${theme === "dark"
-                  ? "from-[#141414] to-[#1a1a1a]"
-                  : "from-gray-100 to-gray-200"
+                ? "from-[#141414] to-[#1a1a1a]"
+                : "from-gray-100 to-gray-200"
                 }`}
             >
               <Image
@@ -199,7 +199,7 @@ export function Hero() {
                 fill
                 className="object-cover profile-image"
                 priority
-                sizes="(max-width: 768px) 288px, 384px"
+                sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 450px, 520px"
               />
             </div>
 
@@ -218,11 +218,11 @@ export function Hero() {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            className={`absolute top-0 md:top-4 right-0 md:-right-4 px-4 py-2 border border-[#00f56b]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
+            className={`absolute -top-2 md:top-4 -right-2 md:-right-4 px-3 py-1.5 md:px-4 md:py-2 border border-[#00f56b]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
               }`}
           >
-            <span className="text-[#00f56b] text-sm font-medium flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#00f56b] animate-pulse" />
+            <span className="text-[#00f56b] text-xs md:text-sm font-medium flex items-center gap-2">
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#00f56b] animate-pulse" />
               Ethereum Fellow
             </span>
           </motion.div>
@@ -235,11 +235,11 @@ export function Hero() {
               delay: 0.5,
               ease: "easeInOut",
             }}
-            className={`absolute bottom-0 md:bottom-8 left-0 md:-left-4 px-4 py-2 border border-[#f5bc00]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
+            className={`absolute -bottom-2 md:bottom-8 -left-2 md:-left-4 px-3 py-1.5 md:px-4 md:py-2 border border-[#f5bc00]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
               }`}
           >
-            <span className="text-[#f5bc00] text-sm font-medium flex items-center gap-2">
-              <span className="text-lg">🏆</span>
+            <span className="text-[#f5bc00] text-xs md:text-sm font-medium flex items-center gap-2">
+              <span className="text-base md:text-lg">🏆</span>
               3x Hackathon Winner
             </span>
           </motion.div>

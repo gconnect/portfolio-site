@@ -51,13 +51,6 @@ export const eb1Achievements = {
       url: "https://epf.wiki/#/wiki/research/roadmap?id=the-surge",
     },
     {
-      title: "DeFi Payment Systems",
-      description: "Developed decentralized payment systems at Algomint",
-      impact: "Processed 100K+ transactions",
-      evidence: "Production system handling real financial volume",
-      url: "https://app.algomint.io/",
-    },
-    {
       title: "NFT Marketplace Frontend",
       description: "Built NFT marketplace contributing to trading ecosystem",
       impact: "$2M+ in trading volume",
@@ -96,29 +89,28 @@ export const eb1Achievements = {
 
   judgingExperience: [
     {
-      role: "Hackathon Judge/Mentor",
-      organization: "Multiple Web3 Hackathons",
-      description:
-        "Evaluated and mentored participants at, DevFest Eket 2023 Hackathon",
+      role: "GDG Eket 2023, Hackathon Judge/Mentor",
+      organization: "GDG Eket",
+      description: "Evaluated and mentored participants at DevFest Eket 2023 Hackathon",
+      url: "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2023/",
     },
     {
-      role: "Technical Reviewer",
-      organization: "Algorand Foundation",
-      description: "Reviewed technical documentation and developer tutorials",
+      role: "Pycon Nigeria 2020, Speaker Talks Reviewer",
+      organization: "Pycon Nigeria",
+      description: "Reviewed talks submissions and presentations from speakers",
+      url: "https://ng.pycon.org/",
+    },
+    {
+      role: "GDG Eket, Speaker Talks Reviewer",
+      organization: "GDG Eket",
+      description: "Reviewed talks submissions and presentations from speakers",
+      url: "https://gdg.community.dev/gdg-eket/",
     },
   ],
 
   speakingEngagements: [
        // 2026` Events
-    // {
-    //   event: "Google Developers Festival (DevFest Uyo)",
-    //   location: "Uyo, Nigeria",
-    //   year: 2026,
-    //   topic: "Building Safe, Secure and Scalable Solutions using AI",
-    //   type: "Panelist",
-    //   photos: ["/images/events/2025/devfest-uyo-panel2.jpg", "/images/events/2025/devfest-uyo-panelist.jpeg", "/images/events/2025/devfest-uyo.jpeg" ],
-    //   link: "https://gdg.community.dev/events/details/google-gdg-uyo-presents-devfest-uyo-2025/",
-    // },
+
     // 2025 Events
     {
       event: "Google Developers Festival (DevFest Uyo)",
@@ -224,7 +216,7 @@ export const eb1Achievements = {
       year: 2024,
       topic: "Open Permissionless Internet Economy Across Africa",
       type: "Participant",
-      photos: ["/images/events/2024/ethereum-fronteirs-participant.jpeg", "/images/events/2024/ethereum-frontiers-nairobi.jpeg"],
+      photos: ["/images/events/2024/ethereum-fronteirs-participant.jpeg", "/images/events/2024/ethereum-frontiers-nairobi.jpeg", "/images/events/2024/ethereum-fronteirs.png"],
       link: "https://borderless.africa/",
     },
     {
@@ -307,6 +299,33 @@ export const eb1Achievements = {
       type: "Organizer",
       photos: ["/images/events/2024/career-development-organizer.jpg"],
       link: "",
+    },
+    {
+      event: "Django Girls Akwa Ibom",
+      location: "Akwa Ibom, Nigeria",
+      year: 2024,
+      topic: "Teaching Women Web Development with Django",
+      type: "Organizer",
+      photos: ["/images/events/2024/django-girls-workshop.jpg", "/images/events/2024/django_girls_rectangle.webp"],
+      link: "https://djangogirls.org/en/eket/",
+    },
+    {
+      event: "Web3Ladies Akwa Ibom",
+      location: "Akwa Ibom, Nigeria",
+      year: 2024,
+      topic: "Empowering Women in Web3",
+      type: "Speaker",
+      photos: ["/images/events/2024/web3ladies-akwaibom.jpeg"],
+      link: "https://www.web3ladies.com/",
+    },
+    {
+      event: "Women in DeFi",
+      location: "Nigeria",
+      year: 2024,
+      topic: "Women in Decentralized Finance",
+      type: "Speaker",
+      photos: ["/images/events/2024/women-in-defi.jpeg"],
+      link: "https://x.com/womenindefi_org/status/1778066793099071582",
     },
     // 2023 Events
     {
@@ -536,7 +555,7 @@ export const eb1Achievements = {
       year: 2018,
       topic: "International Women's Day Panel",
       type: "Panelist",
-      photos: ["/images/events/2018/iwd uyo panelist.webp"],
+      photos: ["/images/events/2018/panelist-iwd-uyo.png","/images/events/2018/iwd uyo panelist.webp"],
       link: "https://gdg.community.dev/events/details/google-gdg-uyo-presents-women-techmakers-uyo-iwd-2018-celebration/",
     },
     {
@@ -591,33 +610,85 @@ export const eb1Achievements = {
     {
       title: "Ethereum Foundation Devcon SEA Scholarship",
       year: "2024",
-      significance:
-        "Competitive international scholarship for protocol contributors",
-      photos: ["/images/placeholder-award.jpg"],
-      url: "#",
+      significance: "Competitive international scholarship for protocol contributors",
+      evidence: [
+        { photo: "/images/awards/epf-devcon-scholarship.png", 
+          link: "" },
+      ],
     },
     {
-      title: "3x Hackathon Winner",
-      year: "Multiple",
-      significance:
-        "Won hackathons at Celo Blockchain, Cartesi, and Algorand Blockchain",
-      photos: ["/images/placeholder-award.jpg"],
-      url: "https://www.celo.org/",
+      title: "Ethereum Protocol Contributor Badge",
+      year: "2024",
+      significance: "Competitive badge for protocol contributors",
+      evidence: [
+        { photo: "/images/awards/ethereum-contributor-badge.jpeg", 
+          link: "https://github.com/ethereum/ethereum-org-website/pull/13870#issuecomment-2427157500" },
+      ],
+    },
+    {
+      title: "Ethereum Protocol Fellowship Badge",
+      year: "2024",
+      significance: "Competitive badge for fellows",
+      evidence: [
+        { photo: "/images/awards/epf-badge.png", 
+          link: "https://hackmd.io/@gconnect/BJRx9D7Z1l?utm_source=preview-mode&utm_medium=rec" },
+      ],
+    },
+    {
+      title: "Cartesi Dev Tooling Grant",
+      year: "2024",
+      significance: "Competitive grant awarded for developer tooling contributions",
+      evidence: [
+        { photo: "/images/awards/cartesi-grant.png", 
+          link: "https://cartesi.io/blog/cartesi-grants-program-wave1/#p-2740767ccc12" },
+
+          { photo: "/images/awards/cartdevkit-cartesi-grant-project.png", 
+          link: "https://x.com/agatevureglory/status/1813970835352494189?s=20" },
+
+          { photo: "/images/awards/cartdevkit-cartesi-grant.png", 
+          link: "https://x.com/agatevureglory/status/1795495436343812214?s=20" },
+      ],
     },
     {
       title: "Google Developer Groups Organizer Community Award",
       year: "2020-Present",
       significance: "Recognition for community leadership and impact",
-      photos: ["/images/placeholder-award.jpg"],
-      url: "https://gdg.community.dev/",
+      evidence: [
+        { photo: "/images/awards/gdg-organizer-award.jpg", 
+          link: "https://gdg.community.dev/" },
+      ],
     },
     {
       title: "Delta State Government Undergraduate Scholarship",
       year: "2010-2012",
       significance: "Merit-based academic scholarship",
-      photos: ["/images/placeholder-award.jpg"],
-      url: "https://www.delsu.edu.ng/",
+      evidence: [
+        { photo: "/images/awards/delta-state-scholarship.jpg", 
+          link: "" },
+      ],
     },
+  ],
+
+  hackathonWins: [
+    {
+      title: "2x Celo Blockchain Hackathon",
+      year: "2021",
+      project: "",
+      evidence: [
+        { photo: "/images/awards/celo-hackathon-0.png", link: "" },
+        { photo: "/images/awards/celo-hackathon-1.png", link: "" },
+        { photo: "/images/awards/celo-hackathon-2.png", link: "" },
+      ],
+    },
+    {
+      title: "Cartesi Hackathon - CartesiKit",
+      year: "2023",
+      project: "CartesiKit",
+      evidence: [
+        { photo: "/images/awards/cartesi-hackathon-winner-announcement.png", link: "" },
+        { photo: "/images/awards/cartesi-cartesikit.png", link: "" },
+      ],
+    }
   ],
 
   associations: [
@@ -634,13 +705,13 @@ export const eb1Achievements = {
       url: "https://www.kernel.community/",
     },
     {
-      name: "Google Developers Group (GDG) Eket",
+      name: "Google Developers Group",
       role: "Organizer",
       significance: "Community leadership role",
-      url: "https://gdg.community.dev/gdg-eket/",
+      url: "https://gdg.community.dev/",
     },
     {
-      name: "Women Techmaker Eket",
+      name: "Women Techmakers",
       role: "Organizer",
       significance: "Diversity advocacy in tech",
       url: "https://developers.google.com/womentechmakers",
