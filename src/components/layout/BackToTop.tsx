@@ -37,7 +37,7 @@ export function BackToTop() {
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
           onClick={scrollToTop}
-          className={`fixed bottom-6 left-6 z-50 p-3 rounded-full shadow-lg transition-all duration-300 group ${
+          className={`fixed bottom-6 right-6 z-50 p-3 rounded-full shadow-lg transition-all duration-300 group ${
             theme === "dark"
               ? "bg-[#1a1a1a] border border-white/10 hover:border-[#2ea8ff]/50 hover:bg-[#1a1a1a]/90"
               : "bg-white border border-gray-200 hover:border-[#2ea8ff]/50 hover:shadow-xl"

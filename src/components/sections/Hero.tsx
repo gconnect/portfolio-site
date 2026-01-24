@@ -60,13 +60,13 @@ export function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
-          className="order-2 lg:order-1"
+          className="order-2 lg:order-1 text-center lg:text-left"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-2 mb-6"
+            className="flex items-center justify-center lg:justify-start gap-2 mb-6"
           >
             <span className="w-12 h-px bg-[#2ea8ff]" />
             <span className="text-[#2ea8ff] text-sm font-mono tracking-wider">
@@ -108,7 +108,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="flex flex-wrap gap-4 mb-10"
+            className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10"
           >
             <a
               href="#achievements"
@@ -136,7 +136,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="flex items-center gap-4"
+            className="flex items-center justify-center lg:justify-start gap-4"
           >
             <span className={`text-sm ${theme === "dark" ? "text-gray-500" : "text-gray-500"}`}>
               Find me on
@@ -218,40 +218,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        onClick={() => {
-          document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-        }}
-        className="absolute bottom-6 right-6 md:bottom-10 md:left-1/2 md:right-auto md:-translate-x-1/2 cursor-pointer group"
-        aria-label="Scroll to next section"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span
-            className={`text-xs tracking-wider group-hover:text-[#2ea8ff] transition-colors ${theme === "dark" ? "text-gray-500" : "text-gray-400"
-              }`}
-          >
-            SCROLL
-          </span>
-          <div
-            className={`w-6 h-10 border-2 rounded-full flex justify-center pt-2 group-hover:border-[#2ea8ff]/50 transition-colors ${theme === "dark" ? "border-white/20" : "border-gray-300"
-              }`}
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-[#2ea8ff] rounded-full"
-            />
-          </div>
-        </motion.div>
-      </motion.button>
     </section>
   );
 }

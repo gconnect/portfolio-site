@@ -95,7 +95,7 @@ function WorkSectionNav() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
           transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center gap-1"
+          className="fixed right-2 md:right-8 top-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-0.5 md:gap-1"
         >
           <div className={`absolute right-[11px] top-0 bottom-0 w-[2px] rounded-full ${theme === "dark" ? "bg-white/5" : "bg-gray-300"}`} />
           <motion.div
@@ -119,7 +119,8 @@ function WorkSectionNav() {
             const Icon = section.icon;
 
             return (
-              <div key={section.id} className="relative h-10 flex items-center">
+              <div key={section.id} className="relative h-8 md:h-10 flex items-center">
+                {/* Label tooltip - hidden on mobile */}
                 <AnimatePresence>
                   {(isHovered || isActive) && (
                     <motion.div
@@ -127,7 +128,7 @@ function WorkSectionNav() {
                       animate={{ opacity: 1, x: 0, scale: 1 }}
                       exit={{ opacity: 0, x: 10, scale: 0.8 }}
                       transition={{ duration: 0.2 }}
-                      className={`absolute right-8 px-3 py-1.5 rounded-lg whitespace-nowrap text-sm font-medium flex items-center gap-2 ${
+                      className={`absolute right-8 px-3 py-1.5 rounded-lg whitespace-nowrap text-sm font-medium hidden md:flex items-center gap-2 ${
                         theme === "dark"
                           ? "bg-[#1a1a1a] border border-white/10"
                           : "bg-white border border-gray-200 shadow-lg"
@@ -147,7 +148,7 @@ function WorkSectionNav() {
                   onClick={() => scrollToSection(section.id)}
                   onMouseEnter={() => setHoveredSection(section.id)}
                   onMouseLeave={() => setHoveredSection(null)}
-                  className="relative w-6 h-6 flex items-center justify-center"
+                  className="relative w-5 h-5 md:w-6 md:h-6 flex items-center justify-center"
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label={`Navigate to ${section.label}`}
@@ -160,7 +161,7 @@ function WorkSectionNav() {
                     transition={{ duration: 0.2 }}
                   />
                   <motion.div
-                    className="w-2.5 h-2.5 rounded-full"
+                    className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full"
                     style={{
                       backgroundColor: isActive ? section.color : theme === "dark" ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.25)",
                     }}
