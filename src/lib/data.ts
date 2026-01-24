@@ -151,7 +151,7 @@ export const openSourceContributions = [
     organization: "Ethereum Foundation",
     description: "Contributed documentation improvements to the official Ethereum website",
     role: "Contributor",
-    url: "https://ethereum.org",
+    url: "https://github.com/ethereum/ethereum-org-website/pull/13870#issuecomment-2427157500",
     github: "https://github.com/ethereum/ethereum-org-website/pull/13870",
     technologies: ["MDX", "Documentation"],
     category: "Documentation",
