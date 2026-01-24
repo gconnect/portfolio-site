@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo, skills, education } from "@/lib/data";
+import { personalInfo, skills, education, eb1Achievements } from "@/lib/data";
 import { GraduationCap, Code2, Layers, Database, Smartphone } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -161,7 +161,7 @@ export function About() {
                   className={`rounded-lg p-4 ${theme === "dark" ? "bg-[#141414]" : "bg-gray-50"
                     }`}
                 >
-                  <span className="text-[#f5bc00] text-2xl font-bold">20+</span>
+                  <span className="text-[#f5bc00] text-2xl font-bold">{eb1Achievements.speakingEngagements.length}+</span>
                   <p
                     className={`text-sm mt-1 ${theme === "dark" ? "text-gray-400" : "text-gray-600"
                       }`}

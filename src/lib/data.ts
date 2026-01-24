@@ -663,7 +663,7 @@ export const eb1Achievements = {
       year: "2010-2012",
       significance: "Merit-based academic scholarship",
       evidence: [
-        { photo: "/images/awards/delta-state-scholarship.jpg", 
+        { photo: "/images/awards/delta-state-undergraduate-scholarship.png",
           link: "" },
       ],
     },

@@ -18,8 +18,8 @@ export default function Home() {
       <Hero />
       <About />
       <Achievements />
-      <Community />
       <Speaking />
+      <Community />
       <Writing />
       <Contact />
       <Footer />

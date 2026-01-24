@@ -1,0 +1,708 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { eb1Achievements } from "@/lib/data";
+import {
+  MapPin,
+  Mic,
+  Video,
+  Users,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ImageIcon,
+  ChevronDown,
+  ExternalLink,
+  Calendar,
+  Award,
+  ArrowLeft,
+  Globe,
+  TrendingUp,
+  Sun,
+  Moon,
+} from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
+
+const typeConfig = {
+  Speaker: { color: "#2ea8ff", icon: Mic },
+  Panelist: { color: "#907aea", icon: Users },
+  Contributor: { color: "#00f56b", icon: Video },
+  Participant: { color: "#f5bc00", icon: Users },
+  Organizer: { color: "#fa3d8c", icon: Award },
+  Facilitator: { color: "#00d4ff", icon: Users },
+  Coach: { color: "#ff6b6b", icon: Users },
+};
+
+type SpeakingEvent = {
+  event: string;
+  location: string;
+  year: number;
+  topic: string;
+  type: string;
+  photos?: string[];
+  link?: string;
+};
+
+export default function SpeakingPage() {
+  const { theme, toggleTheme } = useTheme();
+  const [selectedEvent, setSelectedEvent] = useState<SpeakingEvent | null>(null);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [expandedYears, setExpandedYears] = useState<number[]>([]);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+
+  // Calculate statistics
+  const stats = useMemo(() => {
+    const events = eb1Achievements.speakingEngagements;
+    const years = [...new Set(events.map((e) => e.year))];
+    const countries = [...new Set(events.map((e) => {
+      const parts = e.location.split(", ");
+      return parts[parts.length - 1];
+    }))];
+    const types = events.reduce((acc, e) => {
+      acc[e.type] = (acc[e.type] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    return {
+      totalEvents: events.length,
+      yearsActive: years.length,
+      countries: countries.length,
+      types,
+    };
+  }, []);
+
+  // Group events by year, sorted descending, with optional type filter
+  const eventsByYear = useMemo(() => {
+    let events = eb1Achievements.speakingEngagements;
+
+    if (selectedType) {
+      events = events.filter((e) => e.type === selectedType);
+    }
+
+    const grouped = events.reduce((acc, event) => {
+      const year = event.year;
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(event);
+      return acc;
+    }, {} as Record<number, typeof eb1Achievements.speakingEngagements>);
+
+    const sortedYears = Object.keys(grouped)
+      .map(Number)
+      .sort((a, b) => b - a);
+
+    return sortedYears.map((year) => ({
+      year,
+      events: grouped[year],
+    }));
+  }, [selectedType]);
+
+  const toggleYear = (year: number) => {
+    setExpandedYears((prev) =>
+      prev.includes(year) ? prev.filter((y) => y !== year) : [...prev, year]
+    );
+  };
+
+  const expandAll = () => {
+    setExpandedYears(eventsByYear.map((y) => y.year));
+  };
+
+  const collapseAll = () => {
+    setExpandedYears([]);
+  };
+
+  const openGallery = (event: SpeakingEvent) => {
+    if (event.photos && event.photos.length > 0) {
+      setSelectedEvent(event);
+      setCurrentPhotoIndex(0);
+    }
+  };
+
+  const closeGallery = () => {
+    setSelectedEvent(null);
+    setCurrentPhotoIndex(0);
+  };
+
+  const nextPhoto = () => {
+    if (selectedEvent?.photos) {
+      setCurrentPhotoIndex((prev) =>
+        prev === selectedEvent.photos!.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevPhoto = () => {
+    if (selectedEvent?.photos) {
+      setCurrentPhotoIndex((prev) =>
+        prev === 0 ? selectedEvent.photos!.length - 1 : prev - 1
+      );
+    }
+  };
+
+  return (
+    <main
+      className={`min-h-screen transition-colors duration-300 ${
+        theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
+      }`}
+    >
+      {/* Header */}
+      <header
+        className={`sticky top-0 z-40 backdrop-blur-md border-b ${
+          theme === "dark"
+            ? "bg-[#0a0a0a]/90 border-white/5"
+            : "bg-white/90 border-gray-200"
+        }`}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+          <Link
+            href="/"
+            className={`flex items-center gap-2 text-sm transition-colors ${
+              theme === "dark"
+                ? "text-gray-400 hover:text-white"
+                : "text-gray-600 hover:text-gray-900"
+            }`}
+          >
+            <ArrowLeft size={18} />
+            Back to Home
+          </Link>
+          <button
+            onClick={toggleTheme}
+            className={`p-2.5 rounded-full transition-all duration-300 ${
+              theme === "dark"
+                ? "bg-white/10 hover:bg-white/20 text-white"
+                : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+            }`}
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
+      </header>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        {/* Page Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="w-12 h-px bg-[#f5bc00]" />
+            <span className="text-[#f5bc00] text-sm font-mono tracking-wider">
+              SPEAKING
+            </span>
+            <span className="w-12 h-px bg-[#f5bc00]" />
+          </div>
+          <h1
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              theme === "dark" ? "text-white" : "text-gray-900"
+            }`}
+          >
+            Conferences & Events
+          </h1>
+          <p
+            className={`max-w-2xl mx-auto ${
+              theme === "dark" ? "text-gray-400" : "text-gray-600"
+            }`}
+          >
+            Sharing knowledge at international conferences and community events
+            across the globe.
+          </p>
+        </motion.div>
+
+        {/* Statistics */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+        >
+          <div
+            className={`rounded-xl p-5 text-center border ${
+              theme === "dark"
+                ? "bg-[#141414] border-white/5"
+                : "bg-gray-50 border-gray-200"
+            }`}
+          >
+            <div className="flex items-center justify-center mb-2">
+              <Mic size={20} className="text-[#2ea8ff]" />
+            </div>
+            <div
+              className={`text-3xl font-bold mb-1 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {stats.totalEvents}
+            </div>
+            <div className="text-gray-500 text-sm">Total Events</div>
+          </div>
+          <div
+            className={`rounded-xl p-5 text-center border ${
+              theme === "dark"
+                ? "bg-[#141414] border-white/5"
+                : "bg-gray-50 border-gray-200"
+            }`}
+          >
+            <div className="flex items-center justify-center mb-2">
+              <Calendar size={20} className="text-[#00f56b]" />
+            </div>
+            <div
+              className={`text-3xl font-bold mb-1 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {stats.yearsActive}
+            </div>
+            <div className="text-gray-500 text-sm">Years Active</div>
+          </div>
+          <div
+            className={`rounded-xl p-5 text-center border ${
+              theme === "dark"
+                ? "bg-[#141414] border-white/5"
+                : "bg-gray-50 border-gray-200"
+            }`}
+          >
+            <div className="flex items-center justify-center mb-2">
+              <Globe size={20} className="text-[#907aea]" />
+            </div>
+            <div
+              className={`text-3xl font-bold mb-1 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {stats.countries}
+            </div>
+            <div className="text-gray-500 text-sm">Countries</div>
+          </div>
+          <div
+            className={`rounded-xl p-5 text-center border ${
+              theme === "dark"
+                ? "bg-[#141414] border-white/5"
+                : "bg-gray-50 border-gray-200"
+            }`}
+          >
+            <div className="flex items-center justify-center mb-2">
+              <TrendingUp size={20} className="text-[#f5bc00]" />
+            </div>
+            <div
+              className={`text-3xl font-bold mb-1 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {Object.keys(stats.types).length}
+            </div>
+            <div className="text-gray-500 text-sm">Role Types</div>
+          </div>
+        </motion.div>
+
+        {/* Filters */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap items-center justify-between gap-4 mb-8"
+        >
+          {/* Type Filter */}
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setSelectedType(null)}
+              className={`px-3 py-1.5 text-sm rounded-full transition-all ${
+                selectedType === null
+                  ? "bg-[#2ea8ff] text-black font-medium"
+                  : theme === "dark"
+                  ? "bg-white/5 text-gray-400 hover:bg-white/10"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              All ({eb1Achievements.speakingEngagements.length})
+            </button>
+            {Object.entries(stats.types).map(([type, count]) => {
+              const config = typeConfig[type as keyof typeof typeConfig];
+              return (
+                <button
+                  key={type}
+                  onClick={() => setSelectedType(selectedType === type ? null : type)}
+                  className={`px-3 py-1.5 text-sm rounded-full transition-all flex items-center gap-1.5 ${
+                    selectedType === type
+                      ? "font-medium"
+                      : theme === "dark"
+                      ? "bg-white/5 text-gray-400 hover:bg-white/10"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                  }`}
+                  style={
+                    selectedType === type
+                      ? { backgroundColor: config?.color, color: "#000" }
+                      : {}
+                  }
+                >
+                  {type} ({count})
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Expand/Collapse */}
+          <div className="flex gap-2">
+            <button
+              onClick={expandAll}
+              className={`px-3 py-1.5 text-sm rounded-full transition-all ${
+                theme === "dark"
+                  ? "bg-white/5 text-gray-400 hover:bg-white/10"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              Expand All
+            </button>
+            <button
+              onClick={collapseAll}
+              className={`px-3 py-1.5 text-sm rounded-full transition-all ${
+                theme === "dark"
+                  ? "bg-white/5 text-gray-400 hover:bg-white/10"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }`}
+            >
+              Collapse All
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Year Accordion */}
+        <div className="space-y-4">
+          {eventsByYear.map(({ year, events }, yearIndex) => {
+            const isExpanded = expandedYears.includes(year);
+
+            return (
+              <motion.div
+                key={year}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + yearIndex * 0.05 }}
+                className={`border rounded-xl overflow-hidden ${
+                  theme === "dark"
+                    ? "border-white/10 bg-[#141414]"
+                    : "border-gray-200 bg-gray-50"
+                }`}
+              >
+                {/* Year Header */}
+                <button
+                  onClick={() => toggleYear(year)}
+                  className={`w-full flex items-center justify-between p-5 transition-colors ${
+                    theme === "dark" ? "hover:bg-white/5" : "hover:bg-gray-100"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`text-2xl md:text-3xl font-bold ${
+                        theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {year}
+                    </span>
+                    <span className="text-sm text-gray-500 font-mono">
+                      {events.length} event{events.length > 1 ? "s" : ""}
+                    </span>
+                  </div>
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown size={24} className="text-gray-400" />
+                  </motion.div>
+                </button>
+
+                {/* Events Content */}
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="p-5 pt-0 grid md:grid-cols-2 gap-4">
+                        {events.map((event, index) => {
+                          const config =
+                            typeConfig[event.type as keyof typeof typeConfig] ||
+                            typeConfig.Participant;
+                          const IconComponent = config.icon;
+                          const hasPhotos = event.photos && event.photos.length > 0;
+                          const hasLink = event.link && event.link.length > 0;
+
+                          return (
+                            <motion.div
+                              key={index}
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: index * 0.05 }}
+                              className={`rounded-xl p-5 border transition-all group relative overflow-hidden ${
+                                hasLink ? "cursor-pointer" : ""
+                              } ${
+                                theme === "dark"
+                                  ? "bg-[#1a1a1a] border-white/5 hover:border-white/10"
+                                  : "bg-white border-gray-100 hover:border-gray-300 shadow-sm hover:shadow-md"
+                              }`}
+                              onClick={() => {
+                                if (hasLink) {
+                                  window.open(event.link, "_blank", "noopener,noreferrer");
+                                }
+                              }}
+                            >
+                              {/* Background gradient */}
+                              <div
+                                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                                style={{
+                                  background: `linear-gradient(135deg, ${config.color}08 0%, transparent 50%)`,
+                                }}
+                              />
+
+                              <div className="relative z-10">
+                                {/* Header */}
+                                <div className="flex items-start justify-between mb-3">
+                                  <span
+                                    className="px-2.5 py-1 text-xs font-medium rounded-full flex items-center gap-1.5"
+                                    style={{
+                                      backgroundColor: `${config.color}20`,
+                                      color: config.color,
+                                    }}
+                                  >
+                                    <IconComponent size={12} />
+                                    {event.type}
+                                  </span>
+                                  {hasLink && (
+                                    <ExternalLink
+                                      size={16}
+                                      className="text-gray-500 group-hover:text-[#2ea8ff] transition-colors"
+                                    />
+                                  )}
+                                </div>
+
+                                {/* Event Name */}
+                                <h3
+                                  className={`text-lg font-semibold mb-1.5 group-hover:text-[#2ea8ff] transition-colors ${
+                                    theme === "dark" ? "text-white" : "text-gray-900"
+                                  }`}
+                                >
+                                  {event.event}
+                                </h3>
+
+                                {/* Topic */}
+                                <p
+                                  className={`text-sm mb-3 leading-relaxed line-clamp-2 ${
+                                    theme === "dark" ? "text-gray-400" : "text-gray-600"
+                                  }`}
+                                >
+                                  {event.topic}
+                                </p>
+
+                                {/* Location */}
+                                <div className="flex items-center gap-1.5 text-gray-500 text-sm mb-4">
+                                  <MapPin size={14} className="text-[#2ea8ff]" />
+                                  {event.location}
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex items-center gap-2">
+                                  {hasPhotos && (
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        openGallery(event);
+                                      }}
+                                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+                                        theme === "dark"
+                                          ? "bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white"
+                                          : "bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900"
+                                      }`}
+                                    >
+                                      <ImageIcon size={14} />
+                                      View Photos ({event.photos?.length})
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Decorative corner */}
+                              <div
+                                className="absolute top-0 right-0 w-16 h-16 opacity-5 group-hover:opacity-10 transition-opacity"
+                                style={{
+                                  background: `radial-gradient(circle at top right, ${config.color}, transparent 70%)`,
+                                }}
+                              />
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Speaking CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <div
+            className={`rounded-2xl p-8 border ${
+              theme === "dark"
+                ? "bg-gradient-to-r from-[#2ea8ff]/10 via-[#907aea]/10 to-[#00f56b]/10 border-white/5"
+                : "bg-gradient-to-r from-blue-50 via-purple-50 to-green-50 border-gray-200"
+            }`}
+          >
+            <h3
+              className={`text-xl font-semibold mb-3 ${
+                theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Interested in having me speak?
+            </h3>
+            <p
+              className={`mb-6 max-w-lg mx-auto ${
+                theme === "dark" ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
+              I speak about blockchain protocols, Web3 development, Cloud
+              infrastructure, AI, and building inclusive tech communities.
+            </p>
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#2ea8ff] text-black font-medium rounded-full hover:bg-[#2ea8ff]/90 hover:shadow-[0_0_20px_rgba(46,168,255,0.4)] transition-all"
+            >
+              <Mic size={18} />
+              Invite me to speak
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Photo Gallery Modal */}
+      <AnimatePresence>
+        {selectedEvent && selectedEvent.photos && selectedEvent.photos.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={closeGallery}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-4xl w-full bg-[#141414] rounded-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="p-4 border-b border-white/5 flex items-center justify-between">
+                <div className="flex-1">
+                  <h3 className="text-white font-semibold">{selectedEvent.event}</h3>
+                  <div className="flex items-center gap-3 text-gray-400 text-sm mt-1">
+                    <span className="flex items-center gap-1">
+                      <MapPin size={14} />
+                      {selectedEvent.location}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar size={14} />
+                      {selectedEvent.year}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  {selectedEvent.link && (
+                    <a
+                      href={selectedEvent.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors flex items-center gap-2 text-sm text-gray-400 hover:text-[#2ea8ff]"
+                    >
+                      <ExternalLink size={16} />
+                      <span className="hidden sm:inline">View Event</span>
+                    </a>
+                  )}
+                  <button
+                    onClick={closeGallery}
+                    className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors"
+                  >
+                    <X size={20} className="text-white" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Image Container */}
+              <div className="relative aspect-video bg-black flex items-center justify-center">
+                <Image
+                  src={selectedEvent.photos[currentPhotoIndex]}
+                  alt={`${selectedEvent.event} photo ${currentPhotoIndex + 1}`}
+                  fill
+                  className="object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "/images/placeholder-event.jpg";
+                  }}
+                />
+
+                {/* Navigation arrows */}
+                {selectedEvent.photos.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevPhoto}
+                      className="absolute left-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                    >
+                      <ChevronLeft size={24} className="text-white" />
+                    </button>
+                    <button
+                      onClick={nextPhoto}
+                      className="absolute right-4 p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                    >
+                      <ChevronRight size={24} className="text-white" />
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {/* Photo counter */}
+              <div className="p-4 text-center text-gray-400 text-sm">
+                {currentPhotoIndex + 1} / {selectedEvent.photos.length}
+              </div>
+
+              {/* Thumbnail strip */}
+              {selectedEvent.photos.length > 1 && (
+                <div className="p-4 pt-0 flex justify-center gap-2 overflow-x-auto">
+                  {selectedEvent.photos.map((photo, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentPhotoIndex(idx)}
+                      className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
+                        idx === currentPhotoIndex
+                          ? "border-[#2ea8ff]"
+                          : "border-transparent opacity-50 hover:opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={photo}
+                        alt={`Thumbnail ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </main>
+  );
+}

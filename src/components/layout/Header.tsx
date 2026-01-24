@@ -9,8 +9,8 @@ import { useTheme } from "@/context/ThemeContext";
 const navItems = [
   { name: "About", href: "#about" },
   { name: "Achievements", href: "#achievements" },
+  { name: "Speaking", href: "/speaking" },
   { name: "Community", href: "#community" },
-  { name: "Speaking", href: "#speaking" },
   { name: "Writing", href: "#writing" },
   { name: "Contact", href: "#contact" },
 ];
