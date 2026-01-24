@@ -17,15 +17,17 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gloryjustin.dev"),
-  title: "Glory Justin | Protocol Engineer & Backend Developer",
+  title: "Glory Justin | Protocol Software Engineer & AI Researcher",
   description:
-    "Protocol Engineer at Ethereum Foundation, Backend Developer, and Technical Writer. Building the future of decentralized systems with expertise in blockchain, Web3, and cloud technologies.",
+    "Protocol Engineer, contributor at Ethereum Protocol, Backend Developer, AI Researcher and Technical Writer. Building the future of decentralized systems with expertise in blockchain, Web3, and cloud technologies.",
   keywords: [
     "Glory Justin",
     "Agatevure",
     "Protocol Engineer",
     "Ethereum",
     "Backend Developer",
+    "Java",
+    "Rust",
     "Web3",
     "Blockchain",
     "Technical Writer",
