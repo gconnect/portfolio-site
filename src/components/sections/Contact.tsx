@@ -38,6 +38,7 @@ export function Contact() {
     message: "",
   });
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [submittedName, setSubmittedName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (
@@ -70,6 +71,7 @@ export function Contact() {
       }
 
       setStatus("success");
+      setSubmittedName(formData.name);
       setFormData({ name: "", email: "", subject: "", message: "" });
 
       // Reset status after 5 seconds
@@ -286,10 +288,27 @@ export function Contact() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 p-3 bg-[#00f56b]/10 border border-[#00f56b]/30 rounded-lg text-[#00f56b] text-sm"
+                    className={`p-4 rounded-xl border ${
+                      theme === "dark"
+                        ? "bg-[#00f56b]/10 border-[#00f56b]/30"
+                        : "bg-green-50 border-green-200"
+                    }`}
                   >
-                    <CheckCircle size={18} />
-                    Message sent successfully! I&apos;ll get back to you soon.
+                    <div className="flex items-start gap-3">
+                      <CheckCircle size={22} className="text-[#00f56b] flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className={`font-medium mb-1 ${
+                          theme === "dark" ? "text-[#00f56b]" : "text-green-700"
+                        }`}>
+                          Thank you{submittedName ? `, ${submittedName}` : ""}!
+                        </p>
+                        <p className={`text-sm ${
+                          theme === "dark" ? "text-gray-400" : "text-gray-600"
+                        }`}>
+                          Your message has been received. I appreciate you reaching out and will get back to you as soon as possible, typically within 24-48 hours.
+                        </p>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
 
@@ -339,6 +358,8 @@ export function Contact() {
           className="text-center text-gray-500 text-sm mt-8"
         >
           Currently open to{" "}
+          <span className="text-[#2ea8ff]">Dev engineering roles</span>,{" "}
+          <span className="text-[#2ea8ae]">Technical writing</span>,{" "}
           <span className="text-[#2ea8ff]">speaking engagements</span>,{" "}
           <span className="text-[#907aea]">collaborations</span>, and{" "}
           <span className="text-[#00f56b]">consulting opportunities</span>.

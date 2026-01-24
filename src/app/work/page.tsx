@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 import { openSourceContributions, founderProjects, experimentalProjects } from "@/lib/data";
+import { BackToTop } from "@/components/layout/BackToTop";
 
 // Section navigation config
 const workSections = [
@@ -217,6 +218,7 @@ export default function WorkPage() {
     >
       {/* Section Navigation */}
       <WorkSectionNav />
+      <BackToTop />
 
       {/* Header */}
       <header

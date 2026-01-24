@@ -25,6 +25,7 @@ import {
   Moon,
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { BackToTop } from "@/components/layout/BackToTop";
 
 const typeConfig = {
   Speaker: { color: "#2ea8ff", icon: Mic },
@@ -149,6 +150,8 @@ export default function SpeakingPage() {
         theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
       }`}
     >
+      <BackToTop />
+
       {/* Header */}
       <header
         className={`sticky top-0 z-40 backdrop-blur-md border-b ${
