@@ -19,6 +19,7 @@ export function Hero() {
 
   return (
     <section
+      id="hero"
       className={`min-h-screen flex items-center justify-center relative overflow-hidden pt-20 transition-colors duration-300 ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-white"
         }`}
     >

@@ -2,6 +2,8 @@
 
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SectionNav } from "@/components/layout/SectionNav";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { ThemedMain } from "@/components/layout/ThemedMain";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -15,6 +17,8 @@ export default function Home() {
   return (
     <ThemedMain>
       <Header />
+      <ScrollProgress />
+      <SectionNav />
       <Hero />
       <About />
       <Achievements />

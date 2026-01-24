@@ -9,6 +9,7 @@ import {
   PenTool,
   Newspaper,
   Youtube,
+  Code2,
 } from "lucide-react";
 import { socialLinks } from "@/lib/data";
 import { useTheme } from "@/context/ThemeContext";
@@ -34,6 +35,13 @@ const blogPlatforms = [
     color: "#ff0000",
     icon: Youtube,
     description: "Video content & talks",
+  },
+  {
+    name: "Technical SDK Documentation",
+    url: "https://africlab.gitbook.io/cartdevkit/introduction/overview-of-cartdevkit",
+    color: "#1a1a2e",
+    icon: Code2,
+    description: "CartDevKit developer toolkit docs",
   },
 ];
 
@@ -101,52 +109,86 @@ export function Writing() {
             </div>
 
             <div className="space-y-4">
-              {eb1Achievements.publications.map((pub, index) => (
-                <motion.a
-                  key={index}
-                  href={pub.url || "#"}
-                  target={pub.url ? "_blank" : undefined}
-                  rel={pub.url ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                  className={`flex items-start justify-between p-5 rounded-xl border transition-all group cursor-pointer ${
-                    theme === "dark"
-                      ? "bg-[#1a1a1a] border-white/5 hover:border-[#2ea8ff]/30"
-                      : "bg-white border-gray-200 hover:border-[#2ea8ff]/50 shadow-sm"
-                  }`}
-                >
-                  <div className="flex-1">
-                    <span
-                      className={`text-xs font-medium mb-2 inline-block px-2 py-1 rounded ${
-                        pub.type === "Academic Research"
-                          ? "bg-[#907aea]/20 text-[#907aea]"
-                          : "bg-[#2ea8ff]/20 text-[#2ea8ff]"
-                      }`}
-                    >
-                      {pub.type}
-                    </span>
-                    <h4
-                      className={`font-medium group-hover:text-[#2ea8ff] transition-colors mt-2 leading-relaxed ${
-                        theme === "dark" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      {pub.title}
-                    </h4>
-                    <p className="text-gray-500 text-sm mt-1">
-                      {pub.publication}
-                    </p>
-                  </div>
-                  {pub.url && (
-                    <ExternalLink
-                      size={16}
-                      className="text-gray-500 group-hover:text-[#2ea8ff] flex-shrink-0 ml-4 transition-colors"
-                    />
-                  )}
-                </motion.a>
-              ))}
+              {eb1Achievements.publications.map((pub, index) => {
+                const hasTutorials = 'tutorials' in pub && Array.isArray(pub.tutorials);
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`p-5 rounded-xl border transition-all ${
+                      theme === "dark"
+                        ? "bg-[#1a1a1a] border-white/5 hover:border-[#2ea8ff]/30"
+                        : "bg-white border-gray-200 hover:border-[#2ea8ff]/50 shadow-sm"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <span
+                          className={`text-xs font-medium mb-2 inline-block px-2 py-1 rounded ${
+                            pub.type === "Academic Research"
+                              ? "bg-[#907aea]/20 text-[#907aea]"
+                              : pub.type === "Technical Tutorials"
+                              ? "bg-[#00f56b]/20 text-[#00f56b]"
+                              : "bg-[#2ea8ff]/20 text-[#2ea8ff]"
+                          }`}
+                        >
+                          {pub.type}
+                        </span>
+                        <h4
+                          className={`font-medium mt-2 leading-relaxed ${
+                            theme === "dark" ? "text-white" : "text-gray-900"
+                          }`}
+                        >
+                          {pub.title}
+                        </h4>
+                        <p className="text-gray-500 text-sm mt-1">
+                          {pub.publication}
+                        </p>
+                      </div>
+                      {!hasTutorials && pub.url && (
+                        <a
+                          href={pub.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-500 hover:text-[#2ea8ff] flex-shrink-0 ml-4 transition-colors"
+                        >
+                          <ExternalLink size={16} />
+                        </a>
+                      )}
+                    </div>
+
+                    {/* Nested tutorials for combined entries */}
+                    {hasTutorials && (
+                      <div className="mt-4 pt-4 border-t border-white/5 space-y-2">
+                        {(pub.tutorials as Array<{title: string; url: string}>).map((tutorial, i) => (
+                          <a
+                            key={i}
+                            href={tutorial.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex items-center justify-between py-2 px-3 rounded-lg transition-all group/tutorial ${
+                              theme === "dark"
+                                ? "hover:bg-white/5"
+                                : "hover:bg-gray-100"
+                            }`}
+                          >
+                            <span className={`text-sm group-hover/tutorial:text-[#2ea8ff] transition-colors ${
+                              theme === "dark" ? "text-gray-400" : "text-gray-600"
+                            }`}>
+                              {tutorial.title}
+                            </span>
+                            <ExternalLink size={14} className="text-gray-500 group-hover/tutorial:text-[#2ea8ff] transition-colors" />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -216,45 +258,6 @@ export function Writing() {
               ))}
             </div>
 
-            {/* Featured Articles CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className={`mt-6 p-5 rounded-xl border ${
-                theme === "dark"
-                  ? "bg-gradient-to-br from-[#2ea8ff]/10 to-[#907aea]/10 border-[#2ea8ff]/20"
-                  : "bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200"
-              }`}
-            >
-              <h4
-                className={`font-medium mb-2 ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Featured on Algorand Developer Portal
-              </h4>
-              <p
-                className={`text-sm mb-4 ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                Technical tutorials helping developers build on Algorand blockchain.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {blogLinks.algorand.map((url, index) => (
-                  <a
-                    key={index}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-[#2ea8ff] hover:text-[#2ea8ff]/80 underline underline-offset-2"
-                  >
-                    Tutorial {index + 1}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
