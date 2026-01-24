@@ -214,51 +214,6 @@ export function Hero() {
             />
           </div>
 
-          {/* Floating badges */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-            className={`absolute -top-2 md:top-4 -right-2 md:-right-4 px-3 py-1.5 md:px-4 md:py-2 border border-[#00f56b]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
-              }`}
-          >
-            <span className="text-[#00f56b] text-xs md:text-sm font-medium flex items-center gap-2">
-              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#00f56b] animate-pulse" />
-              Ethereum Fellow
-            </span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 3,
-              delay: 0.5,
-              ease: "easeInOut",
-            }}
-            className={`absolute -bottom-2 md:bottom-8 -left-2 md:-left-4 px-3 py-1.5 md:px-4 md:py-2 border border-[#f5bc00]/30 rounded-full shadow-lg ${theme === "dark" ? "bg-[#141414]" : "bg-white"
-              }`}
-          >
-            <span className="text-[#f5bc00] text-xs md:text-sm font-medium flex items-center gap-2">
-              <span className="text-base md:text-lg">🏆</span>
-              3x Hackathon Winner
-            </span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 3.5,
-              delay: 1,
-              ease: "easeInOut",
-            }}
-            className={`absolute top-1/2 -right-8 md:-right-12 px-4 py-2 border border-[#907aea]/30 rounded-full shadow-lg hidden md:block ${theme === "dark" ? "bg-[#141414]" : "bg-white"
-              }`}
-          >
-            <span className="text-[#907aea] text-sm font-medium">
-              50K+ Devs Impacted
-            </span>
-          </motion.div>
         </motion.div>
       </div>
 
