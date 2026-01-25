@@ -1,6 +1,76 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Rate limiting: Track submissions per email (in-memory, resets on server restart)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT = 3; // Max messages per email
+const RATE_LIMIT_WINDOW = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+function checkRateLimit(email: string): { allowed: boolean; remaining: number } {
+  const now = Date.now();
+  const normalizedEmail = email.toLowerCase();
+  const record = rateLimitMap.get(normalizedEmail);
+
+  // Clean up expired entries periodically
+  if (Math.random() < 0.1) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      if (now > value.resetTime) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
+  if (!record || now > record.resetTime) {
+    // First submission or window expired
+    rateLimitMap.set(normalizedEmail, {
+      count: 1,
+      resetTime: now + RATE_LIMIT_WINDOW,
+    });
+    return { allowed: true, remaining: RATE_LIMIT - 1 };
+  }
+
+  if (record.count >= RATE_LIMIT) {
+    return { allowed: false, remaining: 0 };
+  }
+
+  record.count += 1;
+  return { allowed: true, remaining: RATE_LIMIT - record.count };
+}
+
+// Check if email already exists in Airtable
+async function checkEmailExists(email: string): Promise<boolean> {
+  const airtableApiKey = process.env.AIRTABLE_TOKEN || process.env.AIRTABLE_API_KEY;
+  const airtableBaseId = process.env.AIRTABLE_BASE_ID;
+  const airtableTableName = process.env.AIRTABLE_TABLE_NAME || "Contacts";
+
+  if (!airtableApiKey || !airtableBaseId) {
+    return false;
+  }
+
+  try {
+    const filterFormula = encodeURIComponent(`{Email} = "${email}"`);
+    const response = await fetch(
+      `https://api.airtable.com/v0/${airtableBaseId}/${encodeURIComponent(airtableTableName)}?filterByFormula=${filterFormula}&maxRecords=1`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${airtableApiKey}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const data = await response.json();
+    return data.records && data.records.length > 0;
+  } catch (error) {
+    console.error("Failed to check email in Airtable:", error);
+    return false;
+  }
+}
+
 // Function to save contact to Airtable (for newsletter list)
 async function saveToAirtable(name: string, email: string, subject?: string) {
   const airtableApiKey = process.env.AIRTABLE_TOKEN || process.env.AIRTABLE_API_KEY;
@@ -13,6 +83,13 @@ async function saveToAirtable(name: string, email: string, subject?: string) {
   }
 
   try {
+    // Check if email already exists
+    const exists = await checkEmailExists(email);
+    if (exists) {
+      console.log("Email already exists in Airtable, skipping save:", email);
+      return null;
+    }
+
     const response = await fetch(
       `https://api.airtable.com/v0/${airtableBaseId}/${encodeURIComponent(airtableTableName)}`,
       {
@@ -70,6 +147,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: "Invalid email format" },
         { status: 400 }
+      );
+    }
+
+    // Check rate limit
+    const { allowed, remaining } = checkRateLimit(email);
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "You've reached the daily message limit. Please try again tomorrow." },
+        { status: 429 }
       );
     }
 
@@ -198,7 +284,7 @@ Glory Agatevure
     await transporter.sendMail(autoReplyOptions);
 
     return NextResponse.json(
-      { message: "Email sent successfully" },
+      { message: "Email sent successfully", remaining },
       { status: 200 }
     );
   } catch (error) {
