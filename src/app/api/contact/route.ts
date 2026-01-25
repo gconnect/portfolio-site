@@ -1,6 +1,56 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Function to save contact to Airtable (for newsletter list)
+async function saveToAirtable(name: string, email: string, subject?: string) {
+  const airtableApiKey = process.env.AIRTABLE_TOKEN || process.env.AIRTABLE_API_KEY;
+  const airtableBaseId = process.env.AIRTABLE_BASE_ID;
+  const airtableTableName = process.env.AIRTABLE_TABLE_NAME || "Contacts";
+
+  if (!airtableApiKey || !airtableBaseId) {
+    console.warn("Airtable credentials not configured, skipping save");
+    return null;
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.airtable.com/v0/${airtableBaseId}/${encodeURIComponent(airtableTableName)}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${airtableApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          records: [
+            {
+              fields: {
+                Name: name,
+                Email: email,
+                Subject: subject || "Not specified",
+                "Created At": new Date().toISOString(),
+              },
+            },
+          ],
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Airtable error:", errorData);
+      return null;
+    }
+
+    const data = await response.json();
+    console.log("Contact saved to Airtable:", data.records[0].id);
+    return data;
+  } catch (error) {
+    console.error("Failed to save to Airtable:", error);
+    return null;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -22,6 +72,9 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // Save contact to Airtable (non-blocking, don't fail if Airtable fails)
+    saveToAirtable(name, email, subject);
 
     // Create transporter - using Gmail SMTP (you'll need to configure this)
     // For production, use environment variables
