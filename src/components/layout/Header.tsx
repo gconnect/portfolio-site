@@ -7,13 +7,13 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Achievements", href: "#achievements" },
+  { name: "About", href: "/#about" },
+  { name: "Projects", href: "/work" },
   { name: "Speaking", href: "/speaking" },
-  { name: "Work", href: "/work" },
-  { name: "Community", href: "#community" },
-  { name: "Writing", href: "#writing" },
-  { name: "Contact", href: "#contact" },
+  { name: "Blog", href: "/blog" },
+  { name: "Achievements", href: "/#achievements" },
+  { name: "Community", href: "/#community" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Header() {
@@ -33,20 +33,18 @@ export function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? theme === "dark"
-              ? "bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5"
-              : "bg-white/90 backdrop-blur-md border-b border-gray-200"
-            : ""
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? theme === "dark"
+            ? "bg-[#0a0a0a]/90 backdrop-blur-md border-b border-white/5"
+            : "bg-white/90 backdrop-blur-md border-b border-gray-200"
+          : ""
+          }`}
       >
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className={`text-xl font-bold hover:opacity-80 transition-opacity ${
-              theme === "dark" ? "text-white" : "text-gray-900"
-            }`}
+            className={`text-xl font-bold hover:opacity-80 transition-opacity ${theme === "dark" ? "text-white" : "text-gray-900"
+              }`}
           >
             Glory<span className="text-[#2ea8ff]">.</span>
           </Link>
@@ -62,11 +60,10 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  className={`text-sm transition-colors relative group ${
-                    theme === "dark"
-                      ? "text-gray-400 hover:text-white"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
+                  className={`text-sm transition-colors relative group ${theme === "dark"
+                    ? "text-gray-400 hover:text-white"
+                    : "text-gray-600 hover:text-gray-900"
+                    }`}
                 >
                   {item.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#2ea8ff] transition-all duration-300 group-hover:w-full" />
@@ -83,11 +80,10 @@ export function Header() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
               onClick={toggleTheme}
-              className={`p-2.5 rounded-full transition-all duration-300 ${
-                theme === "dark"
-                  ? "bg-white/10 hover:bg-white/20 text-white"
-                  : "bg-gray-100 hover:bg-gray-200 text-gray-700"
-              }`}
+              className={`p-2.5 rounded-full transition-all duration-300 ${theme === "dark"
+                ? "bg-white/10 hover:bg-white/20 text-white"
+                : "bg-gray-100 hover:bg-gray-200 text-gray-700"
+                }`}
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -113,11 +109,10 @@ export function Header() {
             {/* Mobile Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-full transition-all ${
-                theme === "dark"
-                  ? "text-white hover:bg-white/10"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
+              className={`p-2 rounded-full transition-all ${theme === "dark"
+                ? "text-white hover:bg-white/10"
+                : "text-gray-700 hover:bg-gray-100"
+                }`}
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -142,9 +137,8 @@ export function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className={`fixed inset-0 z-40 backdrop-blur-lg md:hidden pt-20 ${
-              theme === "dark" ? "bg-[#0a0a0a]/98" : "bg-white/98"
-            }`}
+            className={`fixed inset-0 z-40 backdrop-blur-lg md:hidden pt-20 ${theme === "dark" ? "bg-[#0a0a0a]/98" : "bg-white/98"
+              }`}
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
               {navItems.map((item, index) => (
@@ -157,9 +151,8 @@ export function Header() {
                   <Link
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`text-2xl hover:text-[#2ea8ff] transition-colors ${
-                      theme === "dark" ? "text-white" : "text-gray-900"
-                    }`}
+                    className={`text-2xl hover:text-[#2ea8ff] transition-colors ${theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
                   >
                     {item.name}
                   </Link>

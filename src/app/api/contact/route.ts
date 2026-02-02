@@ -216,7 +216,7 @@ ${message}
       to: email,
       subject: "Thank you for reaching out! - Glory Agatevure",
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; padding: 40px; border-radius: 16px;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #050505; padding: 40px; border-radius: 16px;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #2ea8ff; margin: 0; font-size: 28px;">Glory Agatevure</h1>
             <p style="color: #888; margin: 5px 0 0 0; font-size: 14px;">Protocol Engineer | AI Researcher | Founder</p>

@@ -1,0 +1,309 @@
+{
+    "awards": [
+        {
+            "id": "legacy-award-1",
+            "title": "Ethereum Foundation Devcon SEA Scholarship",
+            "year": "2024",
+            "significance": "Competitive international scholarship for protocol contributors",
+            "evidence": [
+                {
+                    "photo": "/images/awards/epf-devcon-scholarship.png",
+                    "link": ""
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-award-2",
+            "title": "Ethereum Protocol Contributor Badge",
+            "year": "2024",
+            "significance": "Competitive badge for protocol contributors",
+            "evidence": [
+                {
+                    "photo": "/images/awards/ethereum-contributor-badge.jpeg",
+                    "link": "https://github.com/ethereum/ethereum-org-website/pull/13870#issuecomment-2427157500"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-award-3",
+            "title": "Ethereum Protocol Fellowship Badge",
+            "year": "2024",
+            "significance": "Competitive badge for fellows",
+            "evidence": [
+                {
+                    "photo": "/images/awards/epf-badge.png",
+                    "link": "https://hackmd.io/@gconnect/BJRx9D7Z1l?utm_source=preview-mode&utm_medium=rec"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-award-4",
+            "title": "Cartesi Dev Tooling Grant",
+            "year": "2024",
+            "significance": "Competitive grant awarded for developer tooling contributions",
+            "evidence": [
+                {
+                    "photo": "/images/awards/cartesi-grant.png",
+                    "link": "https://cartesi.io/blog/cartesi-grants-program-wave1/#p-2740767ccc12"
+                },
+                {
+                    "photo": "/images/awards/cartdevkit-cartesi-grant-project.png",
+                    "link": "https://x.com/agatevureglory/status/1813970835352494189?s=20"
+                },
+                {
+                    "photo": "/images/awards/cartdevkit-cartesi-grant.png",
+                    "link": "https://x.com/agatevureglory/status/1795495436343812214?s=20"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-award-5",
+            "title": "Google Developer Groups Organizer Community Award",
+            "year": "2020-Present",
+            "significance": "Recognition for community leadership and impact",
+            "evidence": [
+                {
+                    "photo": "/images/awards/gdg-organizer-award.jpg",
+                    "link": "https://gdg.community.dev/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-award-6",
+            "title": "Delta State Government Undergraduate Scholarship",
+            "year": "2010-2012",
+            "significance": "Merit-based academic scholarship",
+            "evidence": [
+                {
+                    "photo": "/images/awards/delta-state-undergraduate-scholarship.png",
+                    "link": ""
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-win-1",
+            "title": "2x Celo Blockchain Hackathon Winner",
+            "year": "2021",
+            "significance": "Winner of two separate categories in the Celo Mobile-First Hackathon",
+            "evidence": [
+                {
+                    "photo": "/images/awards/celo-hackathon-0.png",
+                    "link": ""
+                },
+                {
+                    "photo": "/images/awards/celo-hackathon-1.png",
+                    "link": ""
+                },
+                {
+                    "photo": "/images/awards/celo-hackathon-2.png",
+                    "link": ""
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-win-2",
+            "title": "Cartesi Hackathon Winner - CartesiKit",
+            "year": "2023",
+            "significance": "Winner for building a comprehensive developer kit on Cartesi",
+            "evidence": [
+                {
+                    "photo": "/images/awards/cartesi-hackathon-winner-announcement.png",
+                    "link": ""
+                },
+                {
+                    "photo": "/images/awards/cartesi-cartesikit.png",
+                    "link": ""
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-contrib-1",
+            "title": "Ephemery Testnet Client Implementation",
+            "year": "2024",
+            "significance": "Original contribution impacting 50K+ users & developers worldwide",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://hackmd.io/@gconnect/BJRx9D7Z1l"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-contrib-2",
+            "title": "Protocol Documentation Leadership",
+            "year": "2024",
+            "significance": "Increased developer engagement by 300% through high-impact technical writing",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://epf.wiki/#/wiki/research/roadmap?id=the-surge"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-contrib-3",
+            "title": "NFT Marketplace Development",
+            "year": "2022",
+            "significance": "Built frontend contributing to $2M+ in trading volume",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://opensea.io/collection/surge-passport"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-judge-1",
+            "title": "Hackathon Judge & Mentor",
+            "year": "2023",
+            "significance": "GDG Eket 2023, evaluating and mentoring next-gen builders",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2023/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-judge-2",
+            "title": "Pycon Nigeria Speaker Reviewer",
+            "year": "2020",
+            "significance": "Technical reviewer for national Python conference submissions",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://ng.pycon.org/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-judge-3",
+            "title": "Speaker Talks Reviewer",
+            "year": "Various",
+            "significance": "GDG Eket, reviewing talk submissions and presentations",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://gdg.community.dev/gdg-eket/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T11:45:00Z",
+            "updated_at": "2026-01-28T11:45:00Z"
+        },
+        {
+            "id": "legacy-assoc-1",
+            "title": "Ethereum Protocol Fellowship",
+            "year": "Cohort 5",
+            "significance": "Selective fellowship for Ethereum protocol contributors",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://epf.wiki/#/wiki/epf"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T11:45:00Z",
+            "updated_at": "2026-01-28T11:45:00Z"
+        },
+        {
+            "id": "legacy-assoc-2",
+            "title": "Gitcoin Kernel Fellowship",
+            "year": "Kb4",
+            "significance": "Selective Web3 builder fellowship",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://www.kernel.community/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T11:45:00Z",
+            "updated_at": "2026-01-28T11:45:00Z"
+        },
+        {
+            "id": "legacy-assoc-3",
+            "title": "Google Developers Group",
+            "year": "2020-Present",
+            "significance": "Community leadership role as an Organizer",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://gdg.community.dev/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T11:45:00Z",
+            "updated_at": "2026-01-28T11:45:00Z"
+        },
+        {
+            "id": "legacy-assoc-4",
+            "title": "Women Techmakers",
+            "year": "2020-Present",
+            "significance": "Diversity advocacy and community leadership as an Organizer",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://developers.google.com/womentechmakers"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T11:45:00Z",
+            "updated_at": "2026-01-28T11:45:00Z"
+        },
+        {
+            "id": "legacy-assoc-5",
+            "title": "Institute of Chartered Accountants of Nigeria (ICAN)",
+            "year": "Member",
+            "significance": "Professional accounting body membership",
+            "evidence": [
+                {
+                    "photo": "",
+                    "link": "https://www.icanig.org/"
+                }
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T11:45:00Z",
+            "updated_at": "2026-01-28T11:45:00Z"
+        }
+    ]
+}

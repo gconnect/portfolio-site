@@ -1,0 +1,26 @@
+{
+    "education": [
+        {
+            "id": "legacy-edu-1",
+            "degree": "Masters of Science in Accounting",
+            "institution": "University of Uyo",
+            "period": "Oct 2015 - Feb 2021",
+            "dissertation": "Liquidity Management and Firm Value of Quoted Manufacturing Companies in Nigeria",
+            "adviser": "Dr Etim Osim Etim",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-edu-2",
+            "degree": "Bachelor of Science in Banking and Finance",
+            "institution": "Delta State University",
+            "period": "Nov 2008 - Dec 2012",
+            "honors": "CGPA 3.73",
+            "dissertation": "Application of Budgeting Techniques in Fiscal Institutions in Nigeria",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        }
+    ]
+}

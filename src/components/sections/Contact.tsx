@@ -90,7 +90,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className={`py-24 relative overflow-hidden transition-colors duration-300 ${theme === "dark" ? "bg-[#0a0a0a]" : "bg-gray-50"
+      className={`py-24 relative overflow-hidden transition-colors duration-300 ${theme === "dark" ? "bg-[#050505]" : "bg-gray-50"
         }`}
     >
       {/* Background Elements */}

@@ -1,0 +1,115 @@
+{
+    "experience": [
+        {
+            "id": "legacy-exp-1",
+            "title": "Backend Engineer (Node.js/NestJS)",
+            "company": "DuceCRM",
+            "period": "Sept 2023 – Present",
+            "type": "current",
+            "highlights": [
+                "Designed core backend architecture using NestJS, PostgreSQL, and Redis",
+                "Developed modular user management and RBAC systems",
+                "Integrated GraphQL + Apollo Federation, optimizing query performance by 40%",
+                "Implemented RabbitMQ message queues for async processing",
+                "Collaborated on CI/CD pipelines and AWS containerized deployments"
+            ],
+            "technologies": [
+                "NestJS",
+                "PostgreSQL",
+                "Redis",
+                "GraphQL",
+                "Apollo",
+                "RabbitMQ",
+                "AWS"
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-2",
+            "title": "Protocol Engineer",
+            "company": "Ethereum Protocol Fellowship",
+            "period": "Jun 2024 – Present",
+            "type": "current",
+            "highlights": [
+                "Implemented Ephemery testnet for Teku/Besu clients impacting 50K+ developers",
+                "Authored protocol documentation increasing developer engagement by 300%",
+                "Collaborated with core Ethereum teams on testnet interoperability"
+            ],
+            "technologies": [
+                "Ethereum",
+                "Java",
+                "Kotlin",
+                "Consensus Layer",
+                "Execution Layer"
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-3",
+            "title": "Frontend Engineer (Gatsby)",
+            "company": "Algomint (DeFi)",
+            "period": "May 2022 – Mar 2023",
+            "type": "past",
+            "highlights": [
+                "Developed decentralized payment systems processing 100K+ transactions",
+                "Implemented stable coin swapping feature",
+                "Reduced onboarding experience by 70% with smooth UX"
+            ],
+            "technologies": [
+                "Gatsby",
+                "React",
+                "Web3",
+                "DeFi"
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-4",
+            "title": "Technical Writer & Frontend Engineer",
+            "company": "Surge Women | Algorand Foundation | Celo Blockchain",
+            "period": "Nov 2021 – May 2022",
+            "type": "past",
+            "highlights": [
+                "Built NFT marketplace frontend contributing to $2M+ trading volume",
+                "Integrated smart contracts via Ethers.js",
+                "Created technical documentation reducing developer onboarding by 80%"
+            ],
+            "technologies": [
+                "React",
+                "Ethers.js",
+                "NFT",
+                "Technical Writing"
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-5",
+            "title": "Mobile Developer",
+            "company": "kodeHauz | Wikimedia Foundation | VisionDev",
+            "period": "May 2017 – Jun 2021",
+            "type": "past",
+            "highlights": [
+                "Developed Java and Kotlin Android Apps for integrated multimedia systems",
+                "Built Flutter ebook app and POS vending machine app",
+                "Made UX improvements on Wikieducation Dashboard"
+            ],
+            "technologies": [
+                "Java",
+                "Kotlin",
+                "Flutter",
+                "Android"
+            ],
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        }
+    ]
+}

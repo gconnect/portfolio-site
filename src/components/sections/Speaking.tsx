@@ -1,9 +1,8 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { eb1Achievements } from "@/lib/data";
 import {
   MapPin,
   Mic,
@@ -14,6 +13,7 @@ import {
   ArrowRight,
   Calendar,
   Globe,
+  Loader2
 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -25,32 +25,34 @@ const typeConfig = {
   Organizer: { color: "#fa3d8c", icon: Award },
   Facilitator: { color: "#00d4ff", icon: Users },
   Coach: { color: "#ff6b6b", icon: Users },
+  "Keynote Speaker": { color: "#2ea8ff", icon: Mic },
+  "Co-Speaker & Organizer": { color: "#fa3d8c", icon: Award },
 };
 
 export function Speaking() {
   const { theme } = useTheme();
+  const [events, setEvents] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Featured events (hand-picked)
-  const featuredEventNames = [
-    "Ethereum Devcon 7 SEA",
-    "Cartesi Podcast",
-    "Google Developers Festival (DevFest Uyo)",
-    "Google Developer Festival (DevFest Owerri)",
-    "Monetizing Tech Skills through Open Source & Freelancing - Women in Defi",
-    "Women Techmakers Uyo (IWD)",
-  ];
-
-  const featuredEvents = useMemo(() => {
-    return featuredEventNames
-      .map((name) =>
-        eb1Achievements.speakingEngagements.find((e) => e.event === name)
-      )
-      .filter(Boolean) as typeof eb1Achievements.speakingEngagements;
+  useEffect(() => {
+    async function fetchEvents() {
+      try {
+        const response = await fetch("/api/public/speaking");
+        const data = await response.json();
+        setEvents(data);
+      } catch (error) {
+        console.error("Failed to fetch speaking events:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchEvents();
   }, []);
 
-  // Calculate statistics
+  // Calculate statistics from dynamic data
   const stats = useMemo(() => {
-    const events = eb1Achievements.speakingEngagements;
+    if (!events.length) return { totalEvents: 0, yearsActive: 0, countries: 0 };
+
     const years = [...new Set(events.map((e) => e.year))];
     const countries = [
       ...new Set(
@@ -66,7 +68,15 @@ export function Speaking() {
       yearsActive: years.length,
       countries: countries.length,
     };
-  }, []);
+  }, [events]);
+
+  if (loading) {
+    return (
+      <div className="py-24 flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-[#2ea8ff]" />
+      </div>
+    );
+  }
 
   return (
     <section
@@ -152,94 +162,105 @@ export function Speaking() {
         </motion.div>
 
         {/* Featured Events Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          {featuredEvents.map((event, index) => {
-            const config =
-              typeConfig[event.type as keyof typeof typeConfig] ||
-              typeConfig.Participant;
-            const IconComponent = config.icon;
-            const hasLink = event.link && event.link.length > 0;
+        {events.length === 0 ? (
+          <div className="text-center py-10">
+            <p className={`text-lg ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
+              No speaking engagements published yet.
+            </p>
+          </div>
+        ) : (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+            {events
+              .filter(e => e.featured)
+              .slice(0, 6)
+              .map((event, index) => {
+                const config =
+                  typeConfig[event.type as keyof typeof typeConfig] ||
+                  typeConfig.Participant;
+                const IconComponent = config.icon || Mic;
+                const hasLink = event.link && event.link.length > 0;
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className={`rounded-xl p-5 border transition-all group relative overflow-hidden ${
-                  hasLink ? "cursor-pointer" : ""
-                } ${
-                  theme === "dark"
-                    ? "bg-[#141414] border-white/5 hover:border-white/10"
-                    : "bg-gray-50 border-gray-100 hover:border-gray-300 shadow-sm hover:shadow-md"
-                }`}
-                onClick={() => {
-                  if (hasLink) {
-                    window.open(event.link, "_blank", "noopener,noreferrer");
-                  }
-                }}
-              >
-                {/* Background gradient */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                  style={{
-                    background: `linear-gradient(135deg, ${config.color}08 0%, transparent 50%)`,
-                  }}
-                />
-
-                <div className="relative z-10">
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-3">
-                    <span
-                      className="px-2.5 py-1 text-xs font-medium rounded-full flex items-center gap-1.5"
+                return (
+                  <motion.div
+                    key={event.id || index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                    className={`rounded-xl p-5 border transition-all group relative overflow-hidden ${
+                      hasLink ? "cursor-pointer" : ""
+                    } ${
+                      theme === "dark"
+                        ? "bg-[#141414] border-white/5 hover:border-white/10"
+                        : "bg-gray-50 border-gray-100 hover:border-gray-300 shadow-sm hover:shadow-md"
+                    }`}
+                    onClick={() => {
+                      if (hasLink) {
+                        window.open(event.link, "_blank", "noopener,noreferrer");
+                      }
+                    }}
+                  >
+                    {/* Background gradient */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
                       style={{
-                        backgroundColor: `${config.color}20`,
-                        color: config.color,
+                        background: `linear-gradient(135deg, ${config.color}08 0%, transparent 50%)`,
                       }}
-                    >
-                      <IconComponent size={12} />
-                      {event.type}
-                    </span>
-                    <span className="text-xs text-gray-500">{event.year}</span>
-                  </div>
+                    />
 
-                  {/* Event Name */}
-                  <h3
-                    className={`text-base font-semibold mb-1.5 group-hover:text-[#2ea8ff] transition-colors line-clamp-1 ${
-                      theme === "dark" ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    {event.event}
-                  </h3>
+                    <div className="relative z-10">
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-3">
+                        <span
+                          className="px-2.5 py-1 text-xs font-medium rounded-full flex items-center gap-1.5"
+                          style={{
+                            backgroundColor: `${config.color}20`,
+                            color: config.color,
+                          }}
+                        >
+                          <IconComponent size={12} />
+                          {event.type}
+                        </span>
+                        <span className="text-xs text-gray-500">{event.year}</span>
+                      </div>
 
-                  {/* Topic */}
-                  <p
-                    className={`text-sm mb-3 leading-relaxed line-clamp-2 ${
-                      theme === "dark" ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    {event.topic}
-                  </p>
+                      {/* Event Name */}
+                      <h3
+                        className={`text-base font-semibold mb-1.5 group-hover:text-[#2ea8ff] transition-colors line-clamp-1 ${
+                          theme === "dark" ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        {event.event}
+                      </h3>
 
-                  {/* Location */}
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1.5 text-gray-500 text-sm">
-                      <MapPin size={14} className="text-[#2ea8ff]" />
-                      <span className="line-clamp-1">{event.location}</span>
+                      {/* Topic */}
+                      <p
+                        className={`text-sm mb-3 leading-relaxed line-clamp-2 ${
+                          theme === "dark" ? "text-gray-400" : "text-gray-600"
+                        }`}
+                      >
+                        {event.topic}
+                      </p>
+
+                      {/* Location */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 text-gray-500 text-sm">
+                          <MapPin size={14} className="text-[#2ea8ff]" />
+                          <span className="line-clamp-1">{event.location}</span>
+                        </div>
+                        {hasLink && (
+                          <ExternalLink
+                            size={14}
+                            className="text-gray-500 group-hover:text-[#2ea8ff] transition-colors flex-shrink-0"
+                          />
+                        )}
+                      </div>
                     </div>
-                    {hasLink && (
-                      <ExternalLink
-                        size={14}
-                        className="text-gray-500 group-hover:text-[#2ea8ff] transition-colors flex-shrink-0"
-                      />
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                  </motion.div>
+                );
+              })}
+          </div>
+        )}
 
         {/* View All Link */}
         <motion.div

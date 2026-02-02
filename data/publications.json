@@ -1,0 +1,41 @@
+{
+    "publications": [
+        {
+            "id": "legacy-pub-1",
+            "title": "Liquidity Management and Firm Value of Quoted Manufacturing Companies in Nigeria",
+            "type": "Academic Research",
+            "publication": "University of Uyo, Department of Accounting",
+            "date": "June 2022",
+            "coAuthors": [
+                "Etim Osim Etim",
+                "Nsima Johnson Umoffong",
+                "Ekwere Raymond Enang"
+            ],
+            "url": "https://www.researchgate.net/scientific-contributions/Glory-Agatevure-2232318568",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-pub-2",
+            "title": "Algorand Developer Tutorials",
+            "type": "Technical Tutorials",
+            "publication": "Algorand Developer Portal",
+            "description": "Azure KeyVault for Wallet Transactions & Android Smart Contract with Kotlin",
+            "tutorials": [
+                {
+                    "title": "Using Azure KeyVault for Wallet Transactions",
+                    "url": "https://developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/"
+                },
+                {
+                    "title": "Build Algorand Android Smart Contract Using Kotlin",
+                    "url": "https://developer.algorand.org/tutorials/build-algorand-android-smart-contract-using-kotlin/"
+                }
+            ],
+            "url": "https://developer.algorand.org/tutorials/using-azure-keyvault-for-wallet-transactions/",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        }
+    ]
+}

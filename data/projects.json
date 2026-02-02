@@ -1,0 +1,312 @@
+{
+    "projects": [
+        {
+            "id": "legacy-founder-1",
+            "name": "Movve.xyz",
+            "description": "A decentralized AI powered ride-hailing solution built with a team of builders",
+            "role": "Founder",
+            "url": "https://movve.xyz",
+            "project_type": "founder",
+            "project_status": "Building",
+            "technologies": [
+                "AI",
+                "Blockchain",
+                "Mobility"
+            ],
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-founder-2",
+            "name": "Africinnovate",
+            "description": "African innovation and technology platform",
+            "role": "Founder",
+            "url": "https://www.africinnovate.com/",
+            "project_type": "founder",
+            "project_status": "Active",
+            "technologies": [
+                "Innovation",
+                "Education",
+                "Africa"
+            ],
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-1",
+            "name": "CartDevKit",
+            "description": "A comprehensive developer toolkit for building decentralized applications on Cartesi blockchain. Includes CLI tools, templates, and documentation for rapid dApp development.",
+            "github": "https://github.com/gconnect/cartdev-kit",
+            "demo": "https://africlab.gitbook.io/cartdevkit/",
+            "image_url": "/images/projects/cartdevkit.png",
+            "technologies": [
+                "TypeScript",
+                "Cartesi",
+                "Docker",
+                "CLI"
+            ],
+            "category": "Blockchain",
+            "year": "2024",
+            "project_type": "experimental",
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-2",
+            "name": "E-Commerce Java Backend",
+            "description": "A robust e-commerce backend API built with Java Spring Boot featuring product management, user authentication, order processing, and payment integration.",
+            "github": "https://github.com/gconnect/eccomerce-java-backend",
+            "image_url": "/images/projects/ecommerce-java.png",
+            "technologies": [
+                "Java",
+                "Spring Boot",
+                "PostgreSQL",
+                "REST API"
+            ],
+            "category": "Backend",
+            "year": "2025",
+            "project_type": "experimental",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-3",
+            "name": "Escrow Backend",
+            "description": "A secure escrow service backend built with NestJS, implementing trustless transactions with smart contract integration for secure payment handling.",
+            "github": "https://github.com/gconnect/Escrow-Backend",
+            "image_url": "/images/projects/escrow-backend.png",
+            "technologies": [
+                "NestJS",
+                "TypeScript",
+                "PostgreSQL",
+                "Web3"
+            ],
+            "category": "Backend",
+            "year": "2025",
+            "project_type": "experimental",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-4",
+            "name": "Tipping Dapp",
+            "description": "A decentralized tipping application allowing users to send cryptocurrency tips to content creators and service providers with minimal fees.",
+            "github": "https://github.com/gconnect/Tipping-Dapp",
+            "image_url": "/images/projects/tipping-dapp.png",
+            "technologies": [
+                "Solidity",
+                "React",
+                "Ethers.js",
+                "Hardhat",
+                "Cartesi",
+                "Ethereum"
+            ],
+            "category": "Blockchain",
+            "year": "2024",
+            "project_type": "experimental",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-5",
+            "name": "BlockBallot",
+            "description": "A transparent and tamper-proof blockchain-based voting system ensuring election integrity through decentralized consensus and cryptographic verification.",
+            "github": "https://github.com/gconnect/blockballot",
+            "image_url": "/images/projects/blockballot.png",
+            "technologies": [
+                "Solidity",
+                "React",
+                "IPFS",
+                "Algorand"
+            ],
+            "category": "Blockchain",
+            "year": "2022",
+            "project_type": "experimental",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-6",
+            "name": "Carbon-Xchange",
+            "description": "A carbon credit trading platform enabling businesses to offset their carbon footprint through blockchain-verified carbon credits marketplace.",
+            "github": "https://github.com/gconnect/Carbon-Xchange",
+            "image_url": "/images/projects/carbon-xchange.png",
+            "technologies": [
+                "Solidity",
+                "Next.js",
+                "The Graph",
+                "Celo"
+            ],
+            "category": "Blockchain",
+            "year": "2023",
+            "project_type": "experimental",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-exp-7",
+            "name": "Telimed-Polygon",
+            "description": "A telemedicine platform built on Polygon blockchain enabling secure, private, and decentralized healthcare consultations with medical professionals.",
+            "github": "https://github.com/gconnect/Telimed-Polygon",
+            "image_url": "/images/projects/telimed.png",
+            "technologies": [
+                "Solidity",
+                "React",
+                "Polygon",
+                "IPFS"
+            ],
+            "category": "Blockchain",
+            "year": "2022",
+            "project_type": "experimental",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-1",
+            "name": "Ephemery Testnet",
+            "organization": "Ethereum Foundation",
+            "description": "Running validator nodes and implementing client specifications for the Ephemery testnet - a resettable Ethereum testnet for protocol development",
+            "role": "Core Contributor",
+            "url": "https://ephemery.dev/",
+            "github": "https://github.com/ephemery-testnet",
+            "technologies": [
+                "Ethereum",
+                "Solidity",
+                "Go",
+                "Java"
+            ],
+            "category": "Protocol",
+            "project_type": "open_source",
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-2",
+            "name": "Teku Consensus Client",
+            "organization": "Consensys",
+            "description": "Implemented native Ephemery testnet support and resolved multiple issues on the Ethereum consensus layer client",
+            "role": "Contributor",
+            "url": "https://github.com/Consensys/teku",
+            "github": "https://github.com/Consensys/teku",
+            "technologies": [
+                "Java",
+                "Ethereum",
+                "Consensus Layer"
+            ],
+            "category": "Protocol",
+            "project_type": "open_source",
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-3",
+            "name": "Besu Execution Client",
+            "organization": "Hyperledger",
+            "description": "Implemented native Ephemery testnet support and contributed bug fixes to the Ethereum execution layer client",
+            "role": "Contributor",
+            "url": "https://github.com/hyperledger/besu",
+            "github": "https://github.com/hyperledger/besu",
+            "technologies": [
+                "Java",
+                "Ethereum",
+                "Execution Layer"
+            ],
+            "category": "Protocol",
+            "project_type": "open_source",
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-4",
+            "name": "Ethereum Protocol Fellowship Wiki",
+            "organization": "Ethereum Foundation",
+            "description": "Contributed research documentation and protocol roadmap resources for the EPF program",
+            "role": "Documentation Lead",
+            "url": "https://epf.wiki/#/wiki/research/roadmap?id=resources",
+            "github": "https://github.com/eth-protocol-fellows/protocol-studies",
+            "technologies": [
+                "Markdown",
+                "Research",
+                "Documentation"
+            ],
+            "category": "Documentation",
+            "project_type": "open_source",
+            "highlight": true,
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-5",
+            "name": "Ethereum.org Website",
+            "organization": "Ethereum Foundation",
+            "description": "Contributed documentation improvements to the official Ethereum website",
+            "role": "Contributor",
+            "url": "https://github.com/ethereum/ethereum-org-website/pull/13870#issuecomment-2427157500",
+            "github": "https://github.com/ethereum/ethereum-org-website/pull/13870",
+            "technologies": [
+                "MDX",
+                "Documentation"
+            ],
+            "category": "Documentation",
+            "project_type": "open_source",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-6",
+            "name": "WikiEducation Dashboard",
+            "organization": "Wikimedia Foundation",
+            "description": "Contributed MVP to MVVM architecture migration and UX improvements to the educational platform",
+            "role": "Contributor",
+            "url": "https://meta.wikimedia.org/wiki/User:Agatevureglory",
+            "github": "https://github.com/WikiEducationFoundation/WikiEduDashboard",
+            "technologies": [
+                "Kotlin"
+            ],
+            "category": "Education",
+            "project_type": "open_source",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-os-7",
+            "name": "Global WordNet Documentation",
+            "organization": "Global WordNet Association",
+            "description": "Contributed to the documentation system for the Global WordNet linguistic database",
+            "role": "Contributor",
+            "url": "https://substack.com/home/post/p-142572355",
+            "github": "https://github.com/globalwordnet/gwadoc",
+            "technologies": [
+                "Python",
+                "Documentation",
+                "NLP"
+            ],
+            "category": "Documentation",
+            "project_type": "open_source",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        }
+    ]
+}

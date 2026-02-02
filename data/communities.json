@@ -1,0 +1,100 @@
+{
+    "communities": [
+        {
+            "id": "legacy-comm-1",
+            "name": "Movve",
+            "role": "Founder",
+            "description": "Building a decentralized AI-powered ride-hailing solution for Africa.",
+            "url": "https://movve.xyz/",
+            "logo": "/images/communities/movve.png",
+            "color": "#00f56b",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-2",
+            "name": "Africinnovate",
+            "role": "Founder",
+            "description": "An African innovation and technology platform empowering developers across the continent through resources, mentorship, and community-driven initiatives.",
+            "url": "https://www.africinnovate.com/",
+            "logo": "/images/communities/africinnovate.png",
+            "color": "#00f56b",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-3",
+            "name": "Google Developer Community Eket",
+            "role": "Community Lead",
+            "description": "Leading the local Google Developer Group chapter, organizing developer events, workshops, and hackathons to grow the tech ecosystem in Eket and surrounding areas.",
+            "url": "https://gdg.community.dev/gdg-eket/",
+            "logo": "/images/communities/gdg.png",
+            "color": "#4285F4",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-4",
+            "name": "Women Techmakers Eket",
+            "role": "Community Lead",
+            "description": "Championing diversity and inclusion in tech by providing visibility, community, and resources for women in technology through workshops, mentorship, and networking events.",
+            "url": "https://developers.google.com/womentechmakers",
+            "logo": "/images/communities/wtm.png",
+            "color": "#fa3d8c",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-5",
+            "name": "Ethereum AkwaIbom",
+            "role": "Community Lead",
+            "description": "Building and growing the Ethereum ecosystem in Akwa Ibom State, Nigeria through education, developer workshops, and Web3 awareness initiatives.",
+            "url": "https://ethereum.org/",
+            "logo": "/images/communities/ethereum.png",
+            "color": "#627EEA",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-6",
+            "name": "Cartesi",
+            "role": "Developer Advocate",
+            "description": "Developer relations and community growth for Cartesi blockchain, facilitating workshops and supporting developers building on the protocol.",
+            "url": "https://cartesi.io/",
+            "logo": "/images/communities/cartesi.png",
+            "color": "#627EEA",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-7",
+            "name": "Andela Learning Community",
+            "role": "Facilitator",
+            "description": "Training the next generation of African developers by facilitating learning tracks and providing mentorship within the Andela ecosystem.",
+            "url": "https://andela.com/",
+            "logo": "/images/communities/andela.png",
+            "color": "#fa3d8c",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        },
+        {
+            "id": "legacy-comm-8",
+            "name": "Django Girls",
+            "role": "Coach & Organizer",
+            "description": "Empowering women in Python and web development through open-participation workshops and community-driven coaching.",
+            "url": "https://djangogirls.org/",
+            "logo": "/images/communities/wtm.png",
+            "color": "#fa3d8c",
+            "status": "published",
+            "created_at": "2026-01-28T01:35:00Z",
+            "updated_at": "2026-01-28T01:35:00Z"
+        }
+    ]
+}

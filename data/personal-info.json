@@ -1,0 +1,21 @@
+{
+    "name": "Glory A. Justin",
+    "nickname": "Agatevure",
+    "title": "Protocol Engineer | AI Researcher | Founder",
+    "tagline": "Building the future of decentralized systems",
+    "location": "Nigeria",
+    "email": "agatevureglory@gmail.com",
+    "shortBio": "Protocol & AI Researcher, Software Engineer, Technical Writer, Content Creator, and Founder. Building innovative solutions across blockchain, Web3, AI, and mobility technology.",
+    "fullBio": "I'm a Protocol Engineer & Researcher contributing to the Ethereum Protocol, with hands-on work across critical infrastructure including the Ephemery testnet, Execution and Consensus layers, and node operations. My experience spans mobile development to full-stack engineering, with deep expertise in Java, NestJS, and blockchain technologies. Beyond engineering, I'm passionate about technical writing and community building, serving as a GDG Organizer and Women Techmaker advocate.",
+    "profileImage": "/images/profile.png",
+    "socialLinks": {
+        "github": "https://github.com/gconnect",
+        "linkedin": "https://www.linkedin.com/in/glory-agatevure/",
+        "twitter": "https://x.com/agatevureglory",
+        "youtube": "https://youtube.com/@agatevureglory",
+        "instagram": "https://instagram.com/agatevureglory",
+        "medium": "https://medium.com/@agatevureglory",
+        "substack": "https://substack.com/@agatevureglory"
+    },
+    "updated_at": "2026-01-28T01:45:00Z"
+}

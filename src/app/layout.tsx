@@ -16,8 +16,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gloryjustin.dev"),
-  title: "Glory Justin | Protocol Software Engineer & AI Researcher",
+  metadataBase: new URL("https://gloryjustin.com"),
+  title: "Glory Justin | Blockchain Protocol Software Engineer & AI Researcher",
   description:
     "Protocol Engineer, contributor at Ethereum Protocol, Backend Developer, AI Researcher and Technical Writer. Building the future of decentralized systems with expertise in blockchain, Web3, and cloud technologies.",
   keywords: [
@@ -34,15 +34,15 @@ export const metadata: Metadata = {
     "NestJS",
     "GraphQL",
   ],
-  authors: [{ name: "Glory Justin", url: "https://gloryjustin.dev" }],
+  authors: [{ name: "Glory Justin", url: "https://gloryjustin.com" }],
   creator: "Glory Justin",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://gloryjustin.dev",
-    title: "Glory Justin | Protocol Engineer & Backend Developer",
+    url: "https://gloryjustin.com",
+    title: "Glory Justin | Blockchain Protocol Software Engineer & AI Researcher",
     description:
-      "Protocol Engineer at Ethereum Foundation, Backend Developer, and Technical Writer. Building the future of decentralized systems.",
+      "Glory Justin | Blockchain Protocol Software Engineer & AI Researcher.",
     siteName: "Glory Justin Portfolio",
     images: [
       {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Glory Justin | Protocol Engineer & Backend Developer",
+    title: "Glory Justin | Blockchain Protocol Software Engineer & AI Researcher",
     description:
       "Protocol Engineer at Ethereum Foundation, Backend Developer, and Technical Writer.",
     creator: "@agatevureglory",

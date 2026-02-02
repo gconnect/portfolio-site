@@ -1,0 +1,893 @@
+{
+  "engagements": [
+    {
+      "id": "legacy-speaking-1",
+      "event": "Google Developers Festival (DevFest Uyo)",
+      "location": "Uyo, Nigeria",
+      "year": 2025,
+      "topic": "Building Safe, Secure and Scalable Solutions using AI",
+      "type": "Panelist",
+      "photos": [
+        "/images/events/2025/devfest-uyo-panel2.jpg",
+        "/images/events/2025/devfest-uyo-panelist.jpeg",
+        "/images/events/2025/devfest-uyo.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-uyo-presents-devfest-uyo-2025/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": true
+    },
+    {
+      "id": "legacy-speaking-2",
+      "event": "Google Developer Festival (DevFest Eket)",
+      "location": "Eket, Nigeria",
+      "year": 2025,
+      "topic": "Community Building and Tech Leadership",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2025/devfest-eket-organizer.jpeg",
+        "/images/events/2025/devfest-eket-organizer1.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2025-building-safe-secure-amp-scalable-solutions/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-3",
+      "event": "Women Techmakers IWD Eket",
+      "location": "Eket, Nigeria",
+      "year": 2025,
+      "topic": "Empowering Women in Tech",
+      "type": "Speaker & Organizer",
+      "photos": [
+        "/images/events/2025/wtm-iwd-eket-speaker & organizer.jpeg",
+        "/images/events/2025/iwd-eket-speakers-organizers.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-iwd-eket-2/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-4",
+      "event": "Women Techmakers Uyo (IWD)",
+      "location": "Uyo, Nigeria",
+      "year": 2025,
+      "topic": "Keynote Address & Women in Tech",
+      "type": "Keynote Speaker",
+      "photos": [
+        "/images/events/2025/iwd-uyo-keynote-speaker1.jpeg",
+        "/images/events/2025/iwd-uyo-keynote-speaker2.jpeg",
+        "/images/events/2025/iwd-uyo-keynote-speaker.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-uyo-presents-international-womens-day-2025-wtm-uyo/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": true
+    },
+    {
+      "id": "legacy-speaking-5",
+      "event": "Digital Career Workshop",
+      "location": "Nigeria",
+      "year": 2025,
+      "topic": "Building a Digital Career",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2025/digital-career-speaker.jpeg"
+      ],
+      "link": "https://www.linkedin.com/posts/activity-7310978943082225664-jlMl",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-6",
+      "event": "Dominating in Tech - RCCG",
+      "location": "Nigeria",
+      "year": 2025,
+      "topic": "Excelling in Technology",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2025/dominating-in-tech-rccg-speaker.jpg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-7",
+      "event": "Monetizing Tech Skills through Open Source & Freelancing - Women in Defi",
+      "location": "Nigeria",
+      "year": 2025,
+      "topic": "How to Monetize Open Source Contributions",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2025/monetizing-open-source-speaker.jpeg"
+      ],
+      "link": "https://www.youtube.com/watch?v=xmLQci3zQcQ",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": true
+    },
+    {
+      "id": "legacy-speaking-8",
+      "event": "Akwa Ibom State University Panel (10x Better Event)",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2025,
+      "topic": "Tech Career Panel Discussion",
+      "type": "Panelist",
+      "photos": [
+        "/images/events/2025/penel aksu 10x better event.jpeg",
+        "/images/events/2025/akwa ibom state university-panelist.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-9",
+      "event": "Ethereum Devcon 7 SEA",
+      "location": "Bangkok, Thailand",
+      "year": 2024,
+      "topic": "Native Implementation of Ephemery Testnet on Besu and Teku Client",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2024/efdevcon-2025.jpeg",
+        "/images/events/2024/efdevcon-epf-coordinators.jpeg",
+        "/images/events/2024/efdevcon-epf-mentors.jpeg",
+        "/images/events/2024/jesse-base-devcon.JPG"
+      ],
+      "link": "https://www.youtube.com/watch?v=eciNYIzb7gE/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": true
+    },
+    {
+      "id": "legacy-speaking-10",
+      "event": "Cartesi Podcast",
+      "location": "Virtual",
+      "year": 2024,
+      "topic": "Building with Cartesi",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2025/cartesi-podcast-speaker.jpeg"
+      ],
+      "link": "https://www.youtube.com/watch?v=9tpnnk1_zUg",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": true
+    },
+    {
+      "id": "legacy-speaking-11",
+      "event": "Ethereum Frontiers",
+      "location": "Nairobi, Kenya",
+      "year": 2024,
+      "topic": "Open Permissionless Internet Economy Across Africa",
+      "type": "Participant",
+      "photos": [
+        "/images/events/2024/ethereum-fronteirs-participant.jpeg",
+        "/images/events/2024/ethereum-frontiers-nairobi.jpeg",
+        "/images/events/2024/ethereum-fronteirs.png"
+      ],
+      "link": "https://borderless.africa/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-12",
+      "event": "Devcon Extended Akwa Ibom",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2024,
+      "topic": "Ethereum Devcon Extended Event",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2024/devcon-extended-akwaibom.jpeg",
+        "/images/events/2024/devcon-extended-akwaibom-1.jpeg"
+      ],
+      "link": "https://luma.com/f1qzse9g",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-13",
+      "event": "Google Developer Festival (DevFest Eket)",
+      "location": "Eket, Nigeria",
+      "year": 2024,
+      "topic": "Keynote - Responsible AI",
+      "type": "Keynote Speaker | Organizer",
+      "photos": [
+        "/images/events/2024/devfest-eket-2024.jpeg",
+        "/images/events/2024/devfest-eket-2024-1.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2024/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-14",
+      "event": "Women Techmakers - Experience AI",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "AI and Machine Learning",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2024/wtm-experience-ai-speaking.jpeg",
+        "/images/events/2024/wtm-experience-ai-1.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-experience-ai/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-15",
+      "event": "Cartesi Onsite Workshop",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "Building with Cartesi Blockchain",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2024/cartesi-onsite-workshop-organizer.jpeg",
+        "/images/events/2024/cartesi-workshop-organizer.jpg",
+        "/images/events/2024/cartesi-workshop-organizer1.jpeg"
+      ],
+      "link": "https://luma.com/Cartesi_Akwa_Ibom",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-16",
+      "event": "Intro to Cartesi - Web3Ladies",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "Introduction to Cartesi Blockchain",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2024/intro-to-cartesi-web3ladies-speaker.jpeg"
+      ],
+      "link": "https://www.web3ladies.com/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-17",
+      "event": "Leveraging AI in Business",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "How to Leverage AI in Business",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2024/leveraging-ai-in-business-speaker.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-18",
+      "event": "Dominating the Digital Space",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "Digital Skills and Career Growth",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2024/dominating the digital space-speaker.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-19",
+      "event": "Python Uyo Meetup - The Future of Python",
+      "location": "Uyo, Nigeria",
+      "year": 2024,
+      "topic": "The Future of Python",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2023/the-future-of-python-speaker.jpeg",
+        "/images/events/2024/python-uyo-meetup-speaker.jpeg",
+        "/images/events/2024/python-uyo-meetup-audience.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-20",
+      "event": "Career Development Workshop",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "Career Development in Tech",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2024/career-development-organizer.jpg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-21",
+      "event": "Django Girls Akwa Ibom",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2024,
+      "topic": "Teaching Women Web Development with Django",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2024/django-girls-workshop.jpg",
+        "/images/events/2024/django_girls_rectangle.webp"
+      ],
+      "link": "https://djangogirls.org/en/eket/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-22",
+      "event": "Web3Ladies Akwa Ibom",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2024,
+      "topic": "Empowering Women in Web3",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2024/web3ladies-akwaibom.jpeg"
+      ],
+      "link": "https://www.web3ladies.com/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-23",
+      "event": "Women in DeFi",
+      "location": "Nigeria",
+      "year": 2024,
+      "topic": "Women in Decentralized Finance",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2024/women-in-defi.jpeg"
+      ],
+      "link": "https://x.com/womenindefi_org/status/1778066793099071582",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-24",
+      "event": "Google Developer Festival (DevFest Owerri)",
+      "location": "Imo State, Nigeria",
+      "year": 2023,
+      "topic": "Building For the Next Billion Web3 Users",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2023/devfest-owrri-speaker.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-owerri-presents-devfest-owerri-2023/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": true
+    },
+    {
+      "id": "legacy-speaking-25",
+      "event": "Google Developer Festival (DevFest Eket)",
+      "location": "Eket, Nigeria",
+      "year": 2023,
+      "topic": "Keynote Address",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2023/devfest-eket-organizer.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2023/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-26",
+      "event": "Google Developer Festival (DevFest Aba)",
+      "location": "Aba, Nigeria",
+      "year": 2023,
+      "topic": "Web3 Development",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2023/devfest-aba-2023-speaker.jpeg",
+        "/images/events/2023/devfest-aba-group-photo.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-aba-presents-devfest-aba-2023/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-27",
+      "event": "Google Developer Festival (DevFest Calabar)",
+      "location": "Calabar, Nigeria",
+      "year": 2023,
+      "topic": "Blockchain Development",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2023/devfest-calabar-speaker.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-calabar-presents-devfest-2023-calabar/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-28",
+      "event": "GDSC AKSU",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2023,
+      "topic": "Tech Career Development",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2023/gdsc-aksu-speaker.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-29",
+      "event": "Google Developer Festival (DevFest Eket)",
+      "location": "Eket, Nigeria",
+      "year": 2022,
+      "topic": "Keynote Address",
+      "type": "Keynote Speaker | Organizer",
+      "photos": [
+        "/images/events/2022/devfest-eket-1.jpeg",
+        "/images/events/2022/devfest-eket-2.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2022/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-30",
+      "event": "Women Techmakers IWD Eket",
+      "location": "Eket, Nigeria",
+      "year": 2022,
+      "topic": "Progress not Perfection",
+      "type": "Keynote Speaker | Organizer",
+      "photos": [
+        "/images/events/2022/wtm-eket-keynote-speaker.jpg",
+        "/images/events/2022/wtm-iwd-organizer.jpg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-iwd-eket-1/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-31",
+      "event": "Google Developer Festival (DevFest Eket)",
+      "location": "Eket, Nigeria",
+      "year": 2021,
+      "topic": "Introduction to Algorand Blockchain",
+      "type": "Co-Speaker & Organizer",
+      "photos": [
+        "/images/events/2021/devfest-eket-2021.jpeg",
+        "/images/events/2021/devfest-eket-2021-1.jpeg",
+        "/images/events/2021/devfest-eket-2021-speaker.jpeg",
+        "/images/events/2021/devfest-eket-2021-organizer.jpg",
+        "/images/events/2021/devfest-eket-organizer.jpeg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-eket-presents-devfest-eket-2021/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-32",
+      "event": "Open Source Festival (OSCAFest)",
+      "location": "Lagos, Nigeria",
+      "year": 2020,
+      "topic": "Open Source and Python",
+      "type": "Panelist",
+      "photos": [
+        "/images/events/2020/oscafest-panel-1.jpeg",
+        "/images/events/2020/oscafest-2020.jpeg",
+        "/images/events/2020/oscafest-2020.jpg",
+        "/images/events/2020/oscafest-python-group-photos.jpg"
+      ],
+      "link": "https://festival.oscafrica.org/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-33",
+      "event": "Excelling in Outreachy - She Code Africa",
+      "location": "Virtual",
+      "year": 2020,
+      "topic": "How to Excel in Outreachy Internship",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2020/excelling-in-outreachy-shecodeafrica-speaker.jpeg"
+      ],
+      "link": "https://shecodeafrica.org/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-34",
+      "event": "Youth Conference",
+      "location": "Nigeria",
+      "year": 2020,
+      "topic": "Tech and Youth Empowerment",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2020/Youth-conference-speaker.jpg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-35",
+      "event": "Python and Open Source Workshop",
+      "location": "Nigeria",
+      "year": 2020,
+      "topic": "Python and Open Source Development",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2020/python-and-opensource-organizer.jpeg",
+        "/images/events/2020/the-why-of-python-organizer.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-36",
+      "event": "Talk About Community",
+      "location": "Nigeria",
+      "year": 2020,
+      "topic": "Building Tech Communities",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2020/talk-about-community-organizer.jpg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-37",
+      "event": "PyCon Africa",
+      "location": "Accra, Ghana",
+      "year": 2019,
+      "topic": "Python Africa Annual Conference",
+      "type": "Participant",
+      "photos": [
+        "/images/events/2019/pycon-africa.jpg"
+      ],
+      "link": "https://africa.pycon.org/2019/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-38",
+      "event": "PyCon Abuja",
+      "location": "Abuja, Nigeria",
+      "year": 2019,
+      "topic": "User Centered Design, Refactoring UI",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2019/pycon-2019-3.jpeg",
+        "/images/events/2019/pycon-2019-1.jpeg",
+        "/images/events/2019/pycon-2019-2.jpeg"
+      ],
+      "link": "https://ng.pycon.org/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-39",
+      "event": "Google Developer Festival (DevFest Uyo)",
+      "location": "Uyo, Nigeria",
+      "year": 2019,
+      "topic": "Rest in Peace, Integrating Apollo GrapQL in Android",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2019/Devfest uyo.jpg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-uyo-presents-devfest-uyo-2019/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-40",
+      "event": "Peek into Google",
+      "location": "Eket, Nigeria",
+      "year": 2019,
+      "topic": "Google Technologies Overview",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2019/peek-into-google-organizer.jpeg",
+        "/images/events/2019/peek-into-google-organizer-2.jpeg"
+      ],
+      "link": "https://gdg.community.dev/gdg-eket/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-41",
+      "event": "Python Abia Meetup",
+      "location": "Abia, Nigeria",
+      "year": 2019,
+      "topic": "Talk about community",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2019/ashpot-aba-tech-community-talkspeaker.jpg"
+      ],
+      "link": "https://pythonabia.org.ng/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-42",
+      "event": "Scratch Educators Meetup",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2019,
+      "topic": "Teaching programming to young learners using Scratch",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2019/scratch-meetup-organizer.jpg"
+      ],
+      "link": "https://scratch.mit.edu/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-43",
+      "event": "Django Girls Eket Workshop",
+      "location": "Eket, Nigeria",
+      "year": 2018,
+      "topic": "Organizing and coaching women in web development with Django",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2018/django-girls-eket-organizer.jpeg",
+        "/images/events/2018/django-girls-workshop-organozer.jpeg",
+        "/images/events/2018/django-girls-workshop-eket.jpeg",
+        "/images/events/2018/django-girls-workshop.jpeg",
+        "/images/events/2018/django-girls-eket3.jpeg"
+      ],
+      "link": "https://djangogirls.org/en/eket2/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-44",
+      "event": "Sheistechy Workshop",
+      "location": "Eket, Nigeria",
+      "year": 2018,
+      "topic": "Tech workshop for secondary school girls",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2018/sheistechy-workshop-organizer.webp"
+      ],
+      "link": "https://medium.com/@agatevureglory",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-45",
+      "event": "Google Developer Festival (DevFest Uyo)",
+      "location": "Uyo, Nigeria",
+      "year": 2018,
+      "topic": "Recognize Text in Images using ML Kit",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2018/devfest-uyo-recognize-text-in-image-ml-speaker.webp"
+      ],
+      "link": "https://gdg.community.dev/gdg-uyo/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-46",
+      "event": "PyCon Nigeria",
+      "location": "Lagos, Nigeria",
+      "year": 2018,
+      "topic": "Python Developer Conference",
+      "type": "Volunteer",
+      "photos": [
+        "/images/events/2018/pycon-lagos.jpg",
+        "/images/events/2018/pycon-lagos.webp"
+      ],
+      "link": "https://ng.pycon.org/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-47",
+      "event": "Python Akwa Ibom Meetup",
+      "location": "Akwa Ibom, Nigeria",
+      "year": 2018,
+      "topic": "Python programming workshop for local developers",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2018/python-meetup-organizer.jpeg"
+      ],
+      "link": "https://medium.com/@agatevureglory",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-48",
+      "event": "Women Techmakers IWD Uyo",
+      "location": "Uyo, Nigeria",
+      "year": 2018,
+      "topic": "International Women's Day Panel",
+      "type": "Panelist",
+      "photos": [
+        "/images/events/2018/panelist-iwd-uyo.png",
+        "/images/events/2018/iwd uyo panelist.webp"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-uyo-presents-women-techmakers-uyo-iwd-2018-celebration/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-49",
+      "event": "Ladies in Tech Monrovia",
+      "location": "Monrovia, Liberia",
+      "year": 2018,
+      "topic": "Empowering Women in Technology",
+      "type": "Speaker",
+      "photos": [
+        "/images/events/2018/ladies-in-tech-monrovia-speaker.jpeg"
+      ],
+      "link": "",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-50",
+      "event": "Scratch Workshop Eket",
+      "location": "Eket, Nigeria",
+      "year": 2018,
+      "topic": "Teaching Kids to Code with Scratch",
+      "type": "Organizer",
+      "photos": [
+        "/images/events/2018/scratch-workshop-eket-organizer.jpeg",
+        "/images/events/2018/scratch-meetup.jpeg"
+      ],
+      "link": "https://scratch.mit.edu/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-51",
+      "event": "Andela Learning Community",
+      "location": "Nigeria",
+      "year": 2018,
+      "topic": "Facilitating developer learning and growth",
+      "type": "Facilitator",
+      "photos": [
+        "/images/events/2018/andela-learning-community-facilitator.webp"
+      ],
+      "link": "https://andela.com/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-52",
+      "event": "DevFest Aba",
+      "location": "Aba, Nigeria",
+      "year": 2017,
+      "topic": "Google Developer Festival",
+      "type": "Participant",
+      "photos": [
+        "/images/events/2017/devfest-aba-participant.jpg"
+      ],
+      "link": "https://gdg.community.dev/events/details/google-gdg-aba-presents-gdg-devfest-se-2017-aba/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    },
+    {
+      "id": "legacy-speaking-53",
+      "event": "Django Girls Delta, Effurun Workshop",
+      "location": "Effurun, Nigeria",
+      "year": 2017,
+      "topic": "Coaching women in web development with Django",
+      "type": "Coach",
+      "photos": [
+        "/images/events/2017/django-girls-coach.jpg"
+      ],
+      "link": "https://djangogirls.org/en/delta1/",
+      "status": "published",
+      "created_at": "2026-01-28T01:35:00Z",
+      "updated_at": "2026-01-28T01:35:00Z",
+      "featured": false
+    }
+  ]
+}

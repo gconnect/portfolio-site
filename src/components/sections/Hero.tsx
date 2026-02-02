@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { personalInfo, socialLinks } from "@/lib/data";
-import { Github, Linkedin, Twitter, Youtube, Instagram, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube, Instagram, ArrowDown, Loader2 } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
 
 const socialIcons = [
@@ -16,6 +17,25 @@ const socialIcons = [
 
 export function Hero() {
   const { theme } = useTheme();
+  const [info, setInfo] = useState<any>(personalInfo);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchInfo() {
+      try {
+        const response = await fetch("/api/public/personal-info");
+        const data = await response.json();
+        if (data.name) {
+          setInfo(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch personal info:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchInfo();
+  }, []);
 
   return (
     <section
@@ -25,7 +45,6 @@ export function Hero() {
     >
       {/* Background Elements */}
       <div className="absolute inset-0">
-        {/* Gradient orbs */}
         <div
           className={`absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-[120px] ${theme === "dark" ? "bg-[#2ea8ff]/20" : "bg-[#2ea8ff]/20"
             }`}
@@ -39,7 +58,6 @@ export function Hero() {
             }`}
         />
 
-        {/* Grid pattern */}
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
@@ -55,7 +73,6 @@ export function Hero() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Left: Text content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -69,8 +86,8 @@ export function Hero() {
             className="flex items-center justify-center lg:justify-start gap-2 mb-6"
           >
             <span className="w-12 h-px bg-[#2ea8ff]" />
-            <span className="text-[#2ea8ff] text-sm font-mono tracking-wider">
-              HELLO, I&apos;M
+            <span className="text-[#2ea8ff] text-sm font-mono tracking-wider uppercase">
+              {loading ? "HELLO" : "HELLO, I'M"}
             </span>
           </motion.div>
 
@@ -81,17 +98,8 @@ export function Hero() {
             className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"
               }`}
           >
-            Glory A. Justin
+            {info.name}
           </motion.h1>
-
-          {/* Dual identity */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-wrap items-center gap-3 mb-6"
-          >
-          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -100,10 +108,9 @@ export function Hero() {
             className={`text-lg mb-8 max-w-lg leading-relaxed ${theme === "dark" ? "text-gray-400" : "text-gray-600"
               }`}
           >
-            {personalInfo.shortBio}
+            {info.shortBio}
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,7 +138,6 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -166,16 +172,13 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right: Profile image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.33, 1, 0.68, 1] }}
           className="relative order-1 lg:order-2"
         >
-          {/* Main image container */}
           <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[450px] md:h-[450px] lg:w-[520px] lg:h-[520px] mx-auto">
-            {/* Animated gradient ring */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -187,7 +190,6 @@ export function Hero() {
               />
             </motion.div>
 
-            {/* Profile image */}
             <div
               className={`absolute inset-2 rounded-full overflow-hidden bg-gradient-to-br ${theme === "dark"
                 ? "from-[#141414] to-[#1a1a1a]"
@@ -195,8 +197,8 @@ export function Hero() {
                 }`}
             >
               <Image
-                src="/images/profile.png"
-                alt="Glory Justin"
+                src={info.profileImage || "/images/profile.png"}
+                alt={info.name}
                 fill
                 className="object-cover profile-image"
                 priority
@@ -204,7 +206,6 @@ export function Hero() {
               />
             </div>
 
-            {/* Decorative elements */}
             <div
               className={`absolute -inset-4 rounded-full border ${theme === "dark" ? "border-white/5" : "border-gray-200"
                 }`}
@@ -214,10 +215,8 @@ export function Hero() {
                 }`}
             />
           </div>
-
         </motion.div>
       </div>
-
     </section>
   );
 }
