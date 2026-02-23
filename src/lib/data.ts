@@ -1006,7 +1006,7 @@ export const education = [
   {
     degree: "Masters of Science in Accounting",
     institution: "University of Uyo",
-    period: "Oct 2015 - Feb 2021",
+    period: "Oct 2015 - Oct 2017",
     dissertation:
       "Liquidity Management and Firm Value of Quoted Manufacturing Companies in Nigeria",
     adviser: "Dr Etim Osim Etim",

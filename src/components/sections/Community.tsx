@@ -209,7 +209,7 @@ export function Community() {
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold text-[#fa3d8c] mb-1">
-                  1000+
+                  10k+
                 </div>
                 <div
                   className={`text-sm ${
